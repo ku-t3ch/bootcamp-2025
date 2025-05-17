@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_Thai } from "next/font/google";
+import { Kanit, Anta } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 
-const font = IBM_Plex_Sans_Thai({
-  weight: ["300", "400", "500"],
+const kanit = Kanit({
+  weight: ["400", "500", "700"],
   subsets: ["thai", "latin"],
+  display: "swap",
+});
+
+const anta = Anta({
+  variable: "--font-anta",
+  weight: ["400"],
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${font.className} antialiased`}>
+      <body className={`${kanit.className} ${anta.variable} antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>
