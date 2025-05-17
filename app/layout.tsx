@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Kanit, Anta } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-import Navbar from "@/components/Sections/Navbar";
+import Navbar from "@/components/Navbar";
 
 const kanit = Kanit({
   weight: ["400", "500", "700"],
