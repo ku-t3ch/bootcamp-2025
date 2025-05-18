@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-export default function AdminLoginForm() {
+export default function LoginForm() {
   const { push } = useRouter();
 
   const form = useForm<LoginSchemaInput>({
