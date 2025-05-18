@@ -20,7 +20,7 @@ export default function AdminLoginForm() {
     },
   });
 
-  const { setUser } = useUserStore();
+  const { setUser, user } = useUserStore();
 
   const onSubmit = async (values: LoginSchemaInput) => {
     // Toast
@@ -36,17 +36,20 @@ export default function AdminLoginForm() {
       if (!res.data) throw new Error("เข้าสู่ระบบไม่สำเร็จ");
 
       // Set user state
-      console.log(res.data.data);
       setUser(res.data.data);
 
       // Success
       toast.success("เข้าสู่ระบบสำเร็จ", {
         id: "form",
-        description: "กำลังนำทางไปยังหน้าแดชบอร์ด",
+        description: "กำลังเปลี่ยนเส้นทาง",
       });
 
-      // Redirect to admin dashboard
-      push("/admin");
+      // If admin then redirect to admin dashboard
+      if (user?.role === "admin") {
+        push("/admin");
+      } else {
+        push("/my-journey");
+      }
     } catch (e) {
       // Error
       toast.error("เข้าสู่ระบบไม่สำเร็จ", {
