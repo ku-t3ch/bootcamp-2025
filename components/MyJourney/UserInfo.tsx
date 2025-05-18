@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Card, CardHeader, Image } from "@heroui/react";
+import { Image } from "@heroui/react";
+import { User } from "@/types/user";
 
 
-type UserInfo = {
-  username: string;
-  team: string;
+type UserInfo = User & {
   logo_url: string;
   score: number;
   team_score: number;
@@ -14,6 +13,7 @@ type UserInfo = {
 
 const mockUser: UserInfo = {
   username: "User1",
+  role: "user",
   team: "Team A",
   logo_url: "/assets/images/teams/TeamPink.png",
   score: 10,
@@ -34,9 +34,9 @@ export default function UserInfo() {
 
   return (
     <div 
-        className="lg:min-w-[700px] md:min-w-[360px] sm:min-w-[360px] bg-transparent border border-2 rounded-[12px] px-8 py-4 flex flex-col items-center gap-8 z-10
+        className="lg:min-w-[700px] md:min-w-[360px] sm:min-w-[360px] bg-transparent border-2 rounded-[12px] px-8 py-4 flex flex-col items-center gap-8 z-10
         border-[#9E99F2] shadow-[0_0_20px_10px_rgba(159,157,184,0.5)]">
-            <div className="grid grid-cols-4 flex lg:gap-15 md:gap-10 sm:gap-10">
+            <div className="grid grid-cols-4 lg:gap-15 md:gap-10 sm:gap-10">
                 <div className="flex justify-start">
                     <Image 
                     src={user.logo_url} 
