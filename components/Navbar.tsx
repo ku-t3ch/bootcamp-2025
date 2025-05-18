@@ -33,13 +33,16 @@ const Navbar: React.FC<NavbarData> = ({
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-transparent text-white h-24 flex items-center justify-between px-4 md:px-8 lg:px-16 z-10">
+    <nav className="fixed top-0 left-0 right-0 bg-transparent text-white h-24 flex items-center justify-between px-4 md:px-8 lg:px-16 z-20">
       <Link href="/" className="flex items-center">
         <Image src={logoPic} alt="Logo" className="h-28 w-auto mr-4" />
       </Link>
 
       <div className="lg:hidden absolute top-6 right-10 p-4 z-20">
-        <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="focus:outline-none"
+        >
           {isOpen ? (
             <AiOutlineClose className="h-8 w-8" />
           ) : (
@@ -50,28 +53,62 @@ const Navbar: React.FC<NavbarData> = ({
 
       {isOpen && (
         <div className="absolute top-20 right-15 w-64 bg-gray-900 text-white rounded-xl shadow-lg flex flex-col py-4 px-6 space-y-4 z-30">
-          <Link href="#bootcamp-info" onClick={() => handleClick("#bootcamp-info")} className="hover:text-gray-300">
+          <Link
+            href="#bootcamp-info"
+            onClick={() => handleClick("#bootcamp-info")}
+            className="hover:text-gray-300"
+          >
             Boot Camp คืออะไร?
           </Link>
-          <Link href="#timeline" onClick={() => handleClick("#timeline")} className="hover:text-gray-300">
+          <Link
+            href="#timeline"
+            onClick={() => handleClick("#timeline")}
+            className="hover:text-gray-300"
+          >
             ไทม์ไลน์
           </Link>
-          <Link href="#ourcamp" onClick={() => handleClick("#our-camp")} className="hover:text-gray-300">
+          <Link
+            href="#ourcamp"
+            onClick={() => handleClick("#our-camp")}
+            className="hover:text-gray-300"
+          >
             ค่ายของเรา
           </Link>
-          <Link href="#sponsors" onClick={() => handleClick("#supporter")} className="hover:text-gray-300">
+          <Link
+            href="#sponsors"
+            onClick={() => handleClick("#supporter")}
+            className="hover:text-gray-300"
+          >
             ผู้สนับสนุน
           </Link>
-          <Link href="#contact-us" onClick={() => handleClick("#contact-us")} className="hover:text-gray-300">
+          <Link
+            href="#contact-us"
+            onClick={() => handleClick("#contact-us")}
+            className="hover:text-gray-300"
+          >
             ติดต่อเรา
           </Link>
-          <Link href="#team-ranking" onClick={() => handleClick("#team-ranking")} className="hover:text-gray-300 flex">
+          <Link
+            href="#team-ranking"
+            onClick={() => handleClick("#team-ranking")}
+            className="hover:text-gray-300 flex"
+          >
             Team Ranking
-            <GoArrowUpRight className="w-5 h-5 ml-1" style={{ color: "white", strokeWidth: 2 }} />
+            <GoArrowUpRight
+              className="w-5 h-5 ml-1"
+              style={{ color: "white", strokeWidth: 2 }}
+            />
           </Link>
-          <Link href="#Log-in" onClick={() => handleClick("#Log-in")} className="hover:text-gray-300 flex">
+          <Link
+            href="#Log-in"
+            onClick={() => handleClick("#Log-in")}
+            className="hover:text-gray-300 flex"
+          >
             Log in
-            <GoArrowUpRight className="w-5 h-5 ml-1" style={{ color: "white", strokeWidth: 2 }} />
+            <GoArrowUpRight
+              className="w-5 h-5 ml-1"
+              style={{ color: "white", strokeWidth: 2 }}
+            />
           </Link>
         </div>
       )}
@@ -101,7 +138,10 @@ const Navbar: React.FC<NavbarData> = ({
             className="inline-flex items-center gap-2 text-base px-4 py-2 bg-Fuchsia-blue hover:bg-violet-700 w-40 h-12 text-white rounded-full"
           >
             Team Ranking
-            <GoArrowUpRight className="w-5 h-5" style={{ color: "white", strokeWidth: 2 }} />
+            <GoArrowUpRight
+              className="w-5 h-5"
+              style={{ color: "white", strokeWidth: 2 }}
+            />
           </Button>
           <Button
             as={Link}
@@ -109,7 +149,10 @@ const Navbar: React.FC<NavbarData> = ({
             className="inline-flex items-center rounded-full text-base px-4 py-2 bg-Indigo hover:bg-violet-700 w-28 h-12 text-white"
           >
             Log in
-            <GoArrowUpRight className="w-5 h-5" style={{ color: "white", strokeWidth: 2 }} />
+            <GoArrowUpRight
+              className="w-5 h-5"
+              style={{ color: "white", strokeWidth: 2 }}
+            />
           </Button>
         </div>
       </div>
