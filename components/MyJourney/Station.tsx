@@ -21,7 +21,7 @@ const Station = ({stationId, status}: StationProps) => {
 
   return (
     <div 
-      className="max-w-[180px] bg-transparent border border-2 rounded-[12px] px-8 py-4 flex flex-col items-center gap-8 z-10"
+      className="max-w-[180px] bg-transparent border-2 rounded-[12px] px-8 py-4 flex flex-col items-center gap-8 z-10"
       style={{ borderColor: `#${stationColor}`, boxShadow: `0 0 20px 3px ${status === "lock" ? "#9F9DB8" : `#${stationColor}`}`, }}
     >
       <div className="flex flex-col items-center">
