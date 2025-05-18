@@ -53,7 +53,7 @@ const OurCamp = () => {
   };
 
   return (
-    <div className="py-20 relative bg-black">
+    <div className="py-20 relative bg-black" id="ourcamp">
       <div className="absolute bg-[url(/assets/images/TimelineBG.gif)] inset-0 bg-cover bg-center opacity-30 z-0"></div>
       <div className="container mx-auto flex flex-col xl:flex-row items-center justify-center gap-10 px-10">
         <div className="text-white relative max-w-[500px] space-y-5">

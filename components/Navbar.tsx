@@ -38,7 +38,7 @@ const Navbar: React.FC<NavbarData> = ({
         <Image src={logoPic} alt="Logo" className="h-28 w-auto mr-4" />
       </Link>
 
-      <div className="md:hidden absolute top-6 right-10 p-4 z-20">
+      <div className="lg:hidden absolute top-6 right-10 p-4 z-20">
         <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
           {isOpen ? (
             <AiOutlineClose className="h-8 w-8" />
@@ -56,10 +56,10 @@ const Navbar: React.FC<NavbarData> = ({
           <Link href="#timeline" onClick={() => handleClick("#timeline")} className="hover:text-gray-300">
             ไทม์ไลน์
           </Link>
-          <Link href="#our-camp" onClick={() => handleClick("#our-camp")} className="hover:text-gray-300">
+          <Link href="#ourcamp" onClick={() => handleClick("#our-camp")} className="hover:text-gray-300">
             ค่ายของเรา
           </Link>
-          <Link href="#supporter" onClick={() => handleClick("#supporter")} className="hover:text-gray-300">
+          <Link href="#sponsors" onClick={() => handleClick("#supporter")} className="hover:text-gray-300">
             ผู้สนับสนุน
           </Link>
           <Link href="#contact-us" onClick={() => handleClick("#contact-us")} className="hover:text-gray-300">
@@ -76,25 +76,25 @@ const Navbar: React.FC<NavbarData> = ({
         </div>
       )}
 
-      <div className="md:flex hidden items-center justify-between gap-14">
-        <div className="hidden md:flex space-x-10">
+      <div className="lg:flex hidden items-center justify-between gap-14">
+        <div className="hidden lg:flex space-x-10">
           <Link href="#bootcamp-info" className="hover:text-gray-300">
             Boot Camp คืออะไร?
           </Link>
           <Link href="#timeline" className="hover:text-gray-300">
             ไทม์ไลน์
           </Link>
-          <Link href="/our-camp" className="hover:text-gray-300">
+          <Link href="#ourcamp" className="hover:text-gray-300">
             ค่ายของเรา
           </Link>
-          <Link href="/sponsors" className="hover:text-gray-300">
+          <Link href="#sponsors" className="hover:text-gray-300">
             ผู้สนับสนุน
           </Link>
-          <Link href="/contact" className="hover:text-gray-300">
+          <Link href="#contact" className="hover:text-gray-300">
             ติดต่อเรา
           </Link>
         </div>
-        <div className="hidden md:flex space-x-7">
+        <div className="hidden lg:flex space-x-7">
           <Button
             as={Link}
             href="/dashboard"
