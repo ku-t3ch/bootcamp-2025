@@ -111,8 +111,8 @@ const timelines: TimelineData[] = [
 const Timeline = () => {
   return (
     <div className="py-20 relative bg-black">
-      <div className="absolute bg-[url(/assets/images/TimelineBG.gif)] inset-0 bg-cover bg-center opacity-30"></div>
-      <h1 className="[font-family:var(--font-anta)] text-white text-6xl text-center">
+      <div className="absolute bg-[url(/assets/images/TimelineBG.gif)] inset-0 bg-cover bg-center opacity-30 z-0"></div>
+      <h1 className="[font-family:var(--font-anta)] text-white text-6xl text-center relative">
         Timeline
       </h1>
       <div className="h-full mt-10">
