@@ -36,7 +36,6 @@ export default function AdminLoginForm() {
       if (!res.data) throw new Error("เข้าสู่ระบบไม่สำเร็จ");
 
       // Set user state
-      console.log(res.data.data);
       setUser(res.data.data);
 
       // Success
