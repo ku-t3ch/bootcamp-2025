@@ -34,14 +34,22 @@ const Navbar: React.FC<NavbarData> = ({
           </Link>
         </div>
         <div className="hidden md:flex space-x-7">
-          <Button className="inline-flex items-center gap-2 text-base px-4 py-2 bg-Fuchsia-blue hover:bg-violet-700 w-40 h-12 text-white rounded-full">
+          <Button
+            as={Link}
+            href="/leaderboard"
+            className="inline-flex items-center gap-2 text-base px-4 py-2 bg-Fuchsia-blue hover:bg-violet-700 w-40 h-12 text-white rounded-full"
+          >
             Team Ranking
             <GoArrowUpRight
               className="w-5 h-5"
               style={{ color: "white", strokeWidth: 2 }}
             />
           </Button>
-          <Button className="inline-flex items-center rounded-full text-base px-4 py-2 bg-Indigo hover:bg-violet-700 w-28 h-12 text-white">
+          <Button
+            as={Link}
+            href="/login"
+            className="inline-flex items-center rounded-full text-base px-4 py-2 bg-Indigo hover:bg-violet-700 w-28 h-12 text-white"
+          >
             Log in
             <GoArrowUpRight
               className="w-5 h-5"
