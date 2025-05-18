@@ -4,16 +4,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button, Image } from "@heroui/react";
 import { GoArrowUpRight } from "react-icons/go";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineClose } from "react-icons/ai";
+import { HiMenu as MenuIcon } from "react-icons/hi";
+import { HiOutlineXMark as XIcon } from "react-icons/hi2";
 
-interface NavbarData {
-  logoPic?: string;
-}
-
-const Navbar: React.FC<NavbarData> = ({
-  logoPic = "/assets/images/logo.png",
-}) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -23,7 +17,11 @@ const Navbar: React.FC<NavbarData> = ({
   return (
     <nav className="fixed top-0 left-0 right-0 bg-transparent text-white h-24 flex items-center justify-between px-4 md:px-8 lg:px-16 z-20">
       <Link href="/" className="flex items-center">
-        <Image src={logoPic} alt="Logo" className="h-28 w-auto mr-4" />
+        <Image
+          src="/assets/images/logo.png"
+          alt="Logo"
+          className="h-28 w-auto mr-4"
+        />
       </Link>
 
       <div className="lg:hidden absolute top-6 right-10 p-4 z-20">
@@ -32,69 +30,49 @@ const Navbar: React.FC<NavbarData> = ({
           className="focus:outline-none"
         >
           {isOpen ? (
-            <AiOutlineClose className="h-8 w-8" />
+            <XIcon className="size-8" />
           ) : (
-            <GiHamburgerMenu className="h-7 w-7 rounded-xl cursor-pointer" />
+            <MenuIcon className="size-8 cursor-pointer" />
           )}
         </button>
       </div>
 
       {isOpen && (
-        <div className="absolute top-20 right-15 w-64 bg-gray-900 text-white rounded-xl shadow-lg flex flex-col py-4 px-6 space-y-4 z-30">
-          <Link
-            href="#bootcamp-info"
-            onClick={handleClick}
-            className="hover:text-gray-300"
-          >
+        <div className="absolute top-20 right-15 w-64 bg-gray-900 text-white rounded-xl shadow-lg flex flex-col py-4 px-6 space-y-4 z-30 *:hover:text-gray-500 *:transition-colors">
+          <Link href="#bootcamp-info" onClick={handleClick}>
             Boot Camp คืออะไร?
           </Link>
-          <Link
-            href="#timeline"
-            onClick={handleClick}
-            className="hover:text-gray-300"
-          >
+          <Link href="#timeline" onClick={handleClick}>
             ไทม์ไลน์
           </Link>
-          <Link
-            href="#ourcamp"
-            onClick={handleClick}
-            className="hover:text-gray-300"
-          >
+          <Link href="#ourcamp" onClick={handleClick}>
             ค่ายของเรา
           </Link>
-          <Link
-            href="#sponsors"
-            onClick={handleClick}
-            className="hover:text-gray-300"
-          >
+          <Link href="#sponsors" onClick={handleClick}>
             ผู้สนับสนุน
           </Link>
-          <Link
-            href="#contact-us"
-            onClick={handleClick}
-            className="hover:text-gray-300"
-          >
+          <Link href="#contact-us" onClick={handleClick}>
             ติดต่อเรา
           </Link>
           <Link
-            href="#team-ranking"
+            href="/dashboard"
             onClick={handleClick}
-            className="hover:text-gray-300 flex"
+            className="flex items-center gap-1"
           >
             Team Ranking
             <GoArrowUpRight
-              className="w-5 h-5 ml-1"
+              className="size-5"
               style={{ color: "white", strokeWidth: 2 }}
             />
           </Link>
           <Link
-            href="#Log-in"
+            href="/login"
             onClick={handleClick}
-            className="hover:text-gray-300 flex"
+            className="flex items-center gap-1"
           >
             Log in
             <GoArrowUpRight
-              className="w-5 h-5 ml-1"
+              className="size-5"
               style={{ color: "white", strokeWidth: 2 }}
             />
           </Link>
@@ -127,7 +105,7 @@ const Navbar: React.FC<NavbarData> = ({
           >
             Team Ranking
             <GoArrowUpRight
-              className="w-5 h-5"
+              className="size-5"
               style={{ color: "white", strokeWidth: 2 }}
             />
           </Button>
@@ -138,7 +116,7 @@ const Navbar: React.FC<NavbarData> = ({
           >
             Log in
             <GoArrowUpRight
-              className="w-5 h-5"
+              className="size-5"
               style={{ color: "white", strokeWidth: 2 }}
             />
           </Button>
