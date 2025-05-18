@@ -1,2 +1,11 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
+
+.bg-bootcamp-primary {
+  @apply bg-[#100F13];
+}
+
+.btn-primary {
+  @apply text-white;
+  @apply bg-[#A599F2] hover:bg-[#A599F2]/90;
+}
