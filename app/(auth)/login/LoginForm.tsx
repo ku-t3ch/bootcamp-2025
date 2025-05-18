@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-export default function AdminLoginForm() {
+export default function LoginForm() {
   const { push } = useRouter();
 
   const form = useForm<LoginSchemaInput>({
@@ -20,7 +20,7 @@ export default function AdminLoginForm() {
     },
   });
 
-  const { setUser, user } = useUserStore();
+  const { setUser } = useUserStore();
 
   const onSubmit = async (values: LoginSchemaInput) => {
     // Toast
@@ -45,7 +45,7 @@ export default function AdminLoginForm() {
       });
 
       // If admin then redirect to admin dashboard
-      if (user?.role === "admin") {
+      if (res.data.data.role === "admin") {
         push("/admin");
       } else {
         push("/my-journey");
@@ -70,7 +70,7 @@ export default function AdminLoginForm() {
           <Input
             {...field}
             label="ชื่อผู้ใช้"
-            variant="bordered"
+            variant="flat"
             isInvalid={!!fieldState.error}
             errorMessage={fieldState.error?.message}
           />
@@ -85,16 +85,18 @@ export default function AdminLoginForm() {
             {...field}
             type="password"
             label="รหัสผ่าน"
-            variant="bordered"
+            variant="flat"
             isInvalid={!!fieldState.error}
             errorMessage={fieldState.error?.message}
           />
         )}
       />
       {/* Login */}
-      <Button type="submit" color="primary" className="w-full">
-        เข้าสู่ระบบ
-      </Button>
+      <div className="mx-auto w-[150px]">
+        <Button type="submit" className="w-full btn-primary">
+          เข้าสู่ระบบ
+        </Button>
+      </div>
     </form>
   );
 }
