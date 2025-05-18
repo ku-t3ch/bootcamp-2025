@@ -9,3 +9,7 @@
   @apply text-white;
   @apply bg-[#A599F2] hover:bg-[#A599F2]/90;
 }
+
+html {
+  scroll-behavior: smooth;
+}

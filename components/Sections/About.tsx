@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const About = () => {
   return (
-    <div className="bg-linear-to-t from-black to-[#110622] bg-no-repeat bg-cover bg-center flex flex-col lg:flex-row items-center justify-center py-20 relative px-10 gap-10">
+    <div className="bg-linear-to-t from-black to-[#110622] bg-no-repeat bg-cover bg-center flex flex-col lg:flex-row items-center justify-center py-20 relative px-10 gap-10" id="bootcamp-info">
       <div className="absolute bg-[url(/assets/images/AboutBG.png)] inset-0 bg-cover bg-center"></div>
       <Image
         src="/assets/images/logo.png"
