@@ -11,7 +11,7 @@ const stationData = {
 };
 
 interface StationProps {
-  stationId: Number;
+  stationId: number;
   status: "lock" | "unlock";
 };
 
