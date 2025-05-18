@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Button, Image } from "@heroui/react";
 import { GoArrowUpRight } from "react-icons/go";
@@ -15,20 +15,8 @@ const Navbar: React.FC<NavbarData> = ({
   logoPic = "/assets/images/logo.png",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [lastClicked, setLastClicked] = useState<string | null>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (lastClicked) {
-        setLastClicked(null);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastClicked]);
-
-  const handleClick = (href: string) => {
-    setLastClicked(href);
+  const handleClick = () => {
     setIsOpen(false);
   };
 
@@ -55,42 +43,42 @@ const Navbar: React.FC<NavbarData> = ({
         <div className="absolute top-20 right-15 w-64 bg-gray-900 text-white rounded-xl shadow-lg flex flex-col py-4 px-6 space-y-4 z-30">
           <Link
             href="#bootcamp-info"
-            onClick={() => handleClick("#bootcamp-info")}
+            onClick={handleClick}
             className="hover:text-gray-300"
           >
             Boot Camp คืออะไร?
           </Link>
           <Link
             href="#timeline"
-            onClick={() => handleClick("#timeline")}
+            onClick={handleClick}
             className="hover:text-gray-300"
           >
             ไทม์ไลน์
           </Link>
           <Link
             href="#ourcamp"
-            onClick={() => handleClick("#our-camp")}
+            onClick={handleClick}
             className="hover:text-gray-300"
           >
             ค่ายของเรา
           </Link>
           <Link
             href="#sponsors"
-            onClick={() => handleClick("#supporter")}
+            onClick={handleClick}
             className="hover:text-gray-300"
           >
             ผู้สนับสนุน
           </Link>
           <Link
             href="#contact-us"
-            onClick={() => handleClick("#contact-us")}
+            onClick={handleClick}
             className="hover:text-gray-300"
           >
             ติดต่อเรา
           </Link>
           <Link
             href="#team-ranking"
-            onClick={() => handleClick("#team-ranking")}
+            onClick={handleClick}
             className="hover:text-gray-300 flex"
           >
             Team Ranking
@@ -101,7 +89,7 @@ const Navbar: React.FC<NavbarData> = ({
           </Link>
           <Link
             href="#Log-in"
-            onClick={() => handleClick("#Log-in")}
+            onClick={handleClick}
             className="hover:text-gray-300 flex"
           >
             Log in
