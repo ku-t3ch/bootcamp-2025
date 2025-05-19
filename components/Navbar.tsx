@@ -1,83 +1,38 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Button, Image } from "@heroui/react";
+import { Button } from "@heroui/react";
 import { GoArrowUpRight } from "react-icons/go";
 import { HiMenu as MenuIcon } from "react-icons/hi";
 import { HiOutlineXMark as XIcon } from "react-icons/hi2";
+import useScroll from "@/hooks/useScroll";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const scroll = useScroll();
+
+  const isTop = scroll.y <= 0;
 
   const handleClick = () => {
     setIsOpen(false);
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-transparent text-white h-24 flex items-center justify-between px-4 md:px-8 lg:px-16 z-20">
+    <nav
+      className={`fixed top-0 left-0 right-0 text-white min-h-24 flex items-center justify-between px-4 md:px-8 lg:px-16 z-20 border-gray-700 transition-colors bg-transparent ${!isTop && "bg-[rgba(0,0,0,0.4)] backdrop-blur border-b"}`}
+    >
       <Link href="/" className="flex items-center">
         <Image
           src="/assets/images/logo.png"
           alt="Logo"
-          className="h-28 w-auto mr-4"
+          width={160}
+          height={130}
+          className="w-30 h-auto -translate-y-1"
         />
       </Link>
-
-      <div className="lg:hidden absolute top-6 right-10 p-4 z-20">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="focus:outline-none"
-        >
-          {isOpen ? (
-            <XIcon className="size-8" />
-          ) : (
-            <MenuIcon className="size-8 cursor-pointer" />
-          )}
-        </button>
-      </div>
-
-      {isOpen && (
-        <div className="absolute top-20 right-15 w-64 bg-gray-900 text-white rounded-xl shadow-lg flex flex-col py-4 px-6 space-y-4 z-30 *:hover:text-gray-500 *:transition-colors">
-          <Link href="#bootcamp-info" onClick={handleClick}>
-            Boot Camp คืออะไร?
-          </Link>
-          <Link href="#timeline" onClick={handleClick}>
-            ไทม์ไลน์
-          </Link>
-          <Link href="#ourcamp" onClick={handleClick}>
-            ค่ายของเรา
-          </Link>
-          <Link href="#sponsors" onClick={handleClick}>
-            ผู้สนับสนุน
-          </Link>
-          <Link href="#contact-us" onClick={handleClick}>
-            ติดต่อเรา
-          </Link>
-          <Link
-            href="/dashboard"
-            onClick={handleClick}
-            className="flex items-center gap-1"
-          >
-            Team Ranking
-            <GoArrowUpRight
-              className="size-5"
-              style={{ color: "white", strokeWidth: 2 }}
-            />
-          </Link>
-          <Link
-            href="/login"
-            onClick={handleClick}
-            className="flex items-center gap-1"
-          >
-            Log in
-            <GoArrowUpRight
-              className="size-5"
-              style={{ color: "white", strokeWidth: 2 }}
-            />
-          </Link>
-        </div>
-      )}
 
       <div className="lg:flex hidden items-center justify-between gap-14">
         <div className="hidden lg:flex space-x-10">
@@ -122,6 +77,63 @@ const Navbar = () => {
           </Button>
         </div>
       </div>
+
+      {/* Mobile Nav  */}
+
+      <div className="lg:hidden absolute top-6 right-10 p-4 z-20">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="focus:outline-none"
+        >
+          {isOpen ? (
+            <XIcon className="size-6" />
+          ) : (
+            <MenuIcon className="size-6 cursor-pointer" />
+          )}
+        </button>
+      </div>
+
+      {isOpen && (
+        <div className="absolute top-18 right-15 w-64 bg-[#111828] border-gray-700 border text-white rounded-xl shadow-lg flex flex-col py-4 px-6 space-y-4 z-30 *:hover:text-gray-500 *:transition-colors">
+          <Link href="#bootcamp-info" onClick={handleClick}>
+            Boot Camp คืออะไร?
+          </Link>
+          <Link href="#timeline" onClick={handleClick}>
+            ไทม์ไลน์
+          </Link>
+          <Link href="#ourcamp" onClick={handleClick}>
+            ค่ายของเรา
+          </Link>
+          <Link href="#sponsors" onClick={handleClick}>
+            ผู้สนับสนุน
+          </Link>
+          <Link href="#contact-us" onClick={handleClick}>
+            ติดต่อเรา
+          </Link>
+          <Link
+            href="/dashboard"
+            onClick={handleClick}
+            className="flex items-center gap-1"
+          >
+            Team Ranking
+            <GoArrowUpRight
+              className="size-5"
+              style={{ color: "white", strokeWidth: 2 }}
+            />
+          </Link>
+          <Link
+            href="/login"
+            onClick={handleClick}
+            className="flex items-center gap-1"
+          >
+            Log in
+            <GoArrowUpRight
+              className="size-5"
+              style={{ color: "white", strokeWidth: 2 }}
+            />
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };
