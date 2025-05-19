@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 text-white min-h-24 flex items-center justify-between px-4 md:px-8 lg:px-16 z-20 border-gray-700 transition-colors bg-transparent ${!isTop && "bg-[rgba(0,0,0,0.4)] backdrop-blur border-b"}`}
+      className={`fixed top-0 left-0 right-0 text-white min-h-24 flex items-center justify-between px-4 md:px-8 lg:px-16 z-999 border-gray-700 transition-colors bg-transparent ${!isTop && "bg-[rgba(0,0,0,0.4)] backdrop-blur border-b"}`}
     >
       <Link href="/" className="flex items-center">
         <Image
@@ -80,7 +80,7 @@ const Navbar = () => {
 
       {/* Mobile Nav  */}
 
-      <div className="lg:hidden absolute top-6 right-10 p-4 z-20">
+      <div className="lg:hidden absolute top-6 right-10 p-4 z-999">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="focus:outline-none"
@@ -94,7 +94,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="absolute top-18 right-15 w-64 bg-[#111828] border-gray-700 border text-white rounded-xl shadow-lg flex flex-col py-4 px-6 space-y-4 z-30 *:hover:text-gray-500 *:transition-colors">
+        <div className="absolute top-18 right-15 w-64 bg-[#111828] border-gray-700 border text-white rounded-xl shadow-lg flex flex-col py-4 px-6 space-y-4 z-999 *:hover:text-gray-500 *:transition-colors">
           <Link href="#bootcamp-info" onClick={handleClick}>
             Boot Camp คืออะไร?
           </Link>
