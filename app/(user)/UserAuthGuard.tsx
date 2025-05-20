@@ -9,7 +9,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export default function AdminAuthGuard({ children }: Props) {
+export default function UserAuthGuard({ children }: Props) {
   const { setUser } = useUserStore();
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -23,15 +23,10 @@ export default function AdminAuthGuard({ children }: Props) {
           setUser(null);
           router.push("/login");
           return;
-        } else if (res.data["data"]["role"] !== "admin") {
-          // if not admin
-          router.push("/");
-          return;
         }
-
         // set user data
-        const { username, team, role, score } = res.data["data"];
-        setUser({ username, team, role, score });
+        const { username, team, role, score, team_score } = res.data["data"];
+        setUser({ username, team, role, score, team_score });
       } catch {
         setUser(null);
         router.push("/login");

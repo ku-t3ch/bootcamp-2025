@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-export default function AdminLoginForm() {
+export default function LoginForm() {
   const { push } = useRouter();
 
   const form = useForm<LoginSchemaInput>({
@@ -36,17 +36,20 @@ export default function AdminLoginForm() {
       if (!res.data) throw new Error("เข้าสู่ระบบไม่สำเร็จ");
 
       // Set user state
-      console.log(res.data.data);
       setUser(res.data.data);
 
       // Success
       toast.success("เข้าสู่ระบบสำเร็จ", {
         id: "form",
-        description: "กำลังนำทางไปยังหน้าแดชบอร์ด",
+        description: "กำลังเปลี่ยนเส้นทาง",
       });
 
-      // Redirect to admin dashboard
-      push("/admin");
+      // If admin then redirect to admin dashboard
+      if (res.data.data.role === "admin") {
+        push("/admin");
+      } else {
+        push("/my-journey");
+      }
     } catch (e) {
       // Error
       toast.error("เข้าสู่ระบบไม่สำเร็จ", {
@@ -67,7 +70,7 @@ export default function AdminLoginForm() {
           <Input
             {...field}
             label="ชื่อผู้ใช้"
-            variant="bordered"
+            variant="flat"
             isInvalid={!!fieldState.error}
             errorMessage={fieldState.error?.message}
           />
@@ -82,16 +85,18 @@ export default function AdminLoginForm() {
             {...field}
             type="password"
             label="รหัสผ่าน"
-            variant="bordered"
+            variant="flat"
             isInvalid={!!fieldState.error}
             errorMessage={fieldState.error?.message}
           />
         )}
       />
       {/* Login */}
-      <Button type="submit" color="primary" className="w-full">
-        เข้าสู่ระบบ
-      </Button>
+      <div className="mx-auto w-[150px]">
+        <Button type="submit" className="w-full btn-primary">
+          เข้าสู่ระบบ
+        </Button>
+      </div>
     </form>
   );
 }

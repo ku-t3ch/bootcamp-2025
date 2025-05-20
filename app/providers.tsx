@@ -14,7 +14,7 @@ export default function Providers({ children }: Props) {
       <Toaster
         richColors
         style={{
-          fontFamily: "IBM Plex Sans Thai, sans-serif",
+          fontFamily: "Kanit, sans-serif",
         }}
       />
     </HeroUIProvider>
