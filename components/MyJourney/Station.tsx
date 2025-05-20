@@ -39,10 +39,10 @@ const Station = ({stationId, status}: StationProps) => {
         </h1>
       </div>
       <button 
-        className="py-2 px-4 rounded-[8px] text-white text-xs md:text-sm hover:cursor-pointer"
+        className="py-2 px-4 rounded-[8px] text-white text-xs md:text-sm"
         style={{ background: status === "lock" ? "#9F9DB8" : `#${stationColor}` }}
       >
-        ดูรายละเอียด
+        {status==="lock" ? "ยังไม่ปลดล็อค" : "ปลดล็อคแล้ว"}
       </button>
     </div>
   );
