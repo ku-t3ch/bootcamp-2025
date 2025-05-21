@@ -21,7 +21,7 @@ const Station = ({stationId, status}: StationProps) => {
 
   return (
     <div 
-      className="w-full max-w-[180px] mx-auto bg-transparent border-2 rounded-[12px] px-8 py-4 flex flex-col items-center gap-8 z-10"
+      className="w-full mx-auto bg-transparent border-2 rounded-[12px] px-8 py-4 flex flex-col items-center gap-8 z-10"
       style={{ borderColor: `#${stationColor}`, boxShadow: `0 0 20px 3px ${status === "lock" ? "#9F9DB8" : `#${stationColor}`}`, }}
     >
       <div className="flex flex-col items-center">
@@ -32,14 +32,14 @@ const Station = ({stationId, status}: StationProps) => {
           height="100"
           className={`${status==="lock" && "filter grayscale-[70%]"}`}
         />
-        <h1 className="space-x-2 text-2xl lg:text-xl [font-family:var(--font-anta)]">
+        <h1 className="space-x-2 text-2xl [font-family:var(--font-anta)]">
           <span style={{ color: `#${stationColor}`}}>
             Station{stationId.toString()}
           </span>
         </h1>
       </div>
       <button 
-        className="py-2 px-4 rounded-[8px] text-white text-xs md:text-sm"
+        className="py-2 px-4 rounded-[8px] text-white text-xs sm:text-sm"
         style={{ background: status === "lock" ? "#9F9DB8" : `#${stationColor}` }}
       >
         {status==="lock" ? "ยังไม่ปลดล็อค" : "ปลดล็อคแล้ว"}
