@@ -21,17 +21,19 @@ const Station = ({stationId, status}: StationProps) => {
 
   return (
     <div 
-      className="w-full mx-auto bg-transparent border-2 rounded-[12px] px-8 py-4 flex flex-col items-center gap-8 z-10"
+      className="w-full max-w-[220px] mx-auto bg-transparent border-2 rounded-[12px] px-8 py-4 flex flex-col items-center gap-8 z-10"
       style={{ borderColor: `#${stationColor}`, boxShadow: `0 0 20px 3px ${status === 0 ? "#9F9DB8" : `#${stationColor}`}`, }}
     >
       <div className="flex flex-col items-center">
+      <div className="relative w-24 h-24">
         <Image
-          src={`/assets/images/teams/Team${station.name}.png`}        
+          src={`/assets/images/teams/Team${station.name}.png`}
           alt="logo"
-          width="100"
-          height="100"
-          className={`${status === 0 && "filter grayscale-[70%]"}`}
+          fill
+          className={`${status === 0 ? "grayscale-[70%]" : ""} object-contain`}
+          sizes="96px"
         />
+      </div>
         <h1 className="space-x-2 text-2xl [font-family:var(--font-anta)]">
           <span style={{ color: `#${stationColor}`}}>
             Station{stationId.toString()}

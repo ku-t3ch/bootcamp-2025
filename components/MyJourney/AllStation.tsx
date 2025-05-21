@@ -26,7 +26,7 @@ const AllStation = ({teamId}: {teamId: string}) => {
     };
 
     fetchStation();
-  }, [])
+  }, [teamId])
 
   if (!stationsInfo) {
     return <p>Loading...</p>

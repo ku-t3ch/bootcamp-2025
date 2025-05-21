@@ -38,10 +38,11 @@ export default function UserInfo({setTeamId}: {setTeamId: React.Dispatch<React.S
         }
       } catch (error) {
         setUser(null);
+        console.error("Fetch user info failed:", error);
       }
     }
     fetchUser();
-  }, []);
+  }, [setTeamId]);
 
   if (!user) {
     return <p>Loading...</p>;
