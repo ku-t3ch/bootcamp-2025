@@ -30,8 +30,8 @@ export default function AdminAuthGuard({ children }: Props) {
         }
 
         // set user data
-        const { username, team, role } = res.data["data"];
-        setUser({ username, team, role });
+        const { username, team, role, score } = res.data["data"];
+        setUser({ username, team, role, score });
       } catch {
         setUser(null);
         router.push("/login");

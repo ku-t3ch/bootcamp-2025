@@ -1,2 +1,29 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
+@config "../tailwind.config.ts";
+
+.swiper-slide:not(.swiper-slide-active) {
+  @apply !grayscale;
+}
+
+.swiper-slide {
+  transition:
+    opacity 0.2s ease-in-out,
+    transform 0.4s ease !important;
+}
+
+.bg-bootcamp-primary {
+  @apply bg-[#100F13];
+}
+
+.btn-primary {
+  @apply text-white;
+  @apply bg-[#A599F2] hover:bg-[#A599F2]/90;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --color-score: #2A0056;
+}

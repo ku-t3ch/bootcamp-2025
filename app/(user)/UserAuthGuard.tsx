@@ -25,8 +25,8 @@ export default function UserAuthGuard({ children }: Props) {
           return;
         }
         // set user data
-        const { username, team, role } = res.data["data"];
-        setUser({ username, team, role });
+        const { username, team, role, score, team_score } = res.data["data"];
+        setUser({ username, team, role, score, team_score });
       } catch {
         setUser(null);
         router.push("/login");
