@@ -4,28 +4,37 @@ import { useEffect, useState } from "react";
 import { Image } from "@heroui/react";
 import { User } from "@/types/user";
 
-
 type UserInfo = User & {
   logo_url: string;
   score: number;
   team_score: number;
 };
 
+const teamData = {
+  "a": { name: "Pink" },
+  "b": { name: "Orange" },
+  "c": { name: "Yellow" },
+  "d": { name: "Green" },
+  "e": { name: "Blue" },
+  "f": { name: "Purple" },
+};
+
 const mockUser: UserInfo = {
   username: "User1",
   role: "user",
-  team: "Team A",
+  team: "a",
   logo_url: "/assets/images/teams/TeamPink.png",
   score: 10,
   team_score: 20,
 };
 
-export default function UserInfo() {
+export default function UserInfo({setTeamId}: {setTeamId: React.Dispatch<React.SetStateAction<string | null>> }) {
   const [user, setUser] = useState<UserInfo | null>(null);
 
   useEffect(() => {
     // fetch '/auth/me'
     setUser(mockUser);
+    setTeamId(mockUser.team);
   }, []);
 
   if (!user) {
@@ -44,7 +53,7 @@ export default function UserInfo() {
       />
       <div className="flex flex-col text-white [font-family:var(--font-anta)]">
           <h4 className="font-bold text-lg">{user.username}</h4>
-          <h5>{user.team}</h5>
+          <h5>Team {user.team.toUpperCase()}</h5>
           <h5>My Score: {user.score}</h5>
           <h5>Team Score: {user.team_score}</h5>
       </div>

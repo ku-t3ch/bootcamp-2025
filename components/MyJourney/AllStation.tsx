@@ -1,27 +1,32 @@
 "use client";
 import { useEffect, useState } from "react";
 import Station from "./Station"
+import axiosClient from "@/lib/axios";
 
 type StationInfo = {
-  id: number;
-  status: "lock" | "unlock";
+  stationId: number;
+  status: number;
 };
 
-const mockStationsInfo: StationInfo[] = [
-  { "id": 1, "status": "unlock" },
-  { "id": 2, "status": "lock" },
-  { "id": 3, "status": "lock" },
-  { "id": 4, "status": "lock" },
-  { "id": 5, "status": "lock" },
-  { "id": 6, "status": "unlock" }
-]
-
-const AllStation = () => {
+const AllStation = ({teamId}: {teamId: string}) => {
   const [stationsInfo, setStationsInfo] = useState<StationInfo[] | null>();
 
   useEffect(() => {
-    setStationsInfo(mockStationsInfo);
-  })
+    const fetchStation = async () => {
+      try {
+        const res = await axiosClient.get(`/station/${teamId}/stations`);
+  
+        if (!res.data) throw new Error("ดึงข้อมูลไม่สำเร็จ");
+        
+        setStationsInfo(res.data.data);
+
+      } catch (error) {
+        console.error("Fetch stations info failed:", error);
+      }
+    };
+
+    fetchStation();
+  }, [])
 
   if (!stationsInfo) {
     return <p>Loading...</p>
@@ -30,7 +35,7 @@ const AllStation = () => {
   return (
     <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-y-8 gap-x-4">
       {stationsInfo.map(station => (
-        <Station key={station.id} stationId={station.id} status={station.status} />
+        <Station key={station.stationId} stationId={station.stationId} status={station.status} />
       ))}
     </div>
   );
