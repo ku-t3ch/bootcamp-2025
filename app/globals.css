@@ -23,3 +23,7 @@
 html {
   scroll-behavior: smooth;
 }
+
+@theme {
+  --color-score: #2A0056;
+}

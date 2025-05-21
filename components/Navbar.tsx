@@ -55,7 +55,7 @@ const Navbar = () => {
         <div className="hidden lg:flex space-x-7">
           <Button
             as={Link}
-            href="/dashboard"
+            href="/leaderboard"
             className="inline-flex items-center gap-2 text-base px-4 py-2 bg-Fuchsia-blue hover:bg-violet-700 w-40 h-12 text-white rounded-full"
           >
             Team Ranking
