@@ -2,6 +2,7 @@
 
 import useUserStore from "@/hooks/userStore";
 import axiosClient from "@/lib/axios";
+import { teamColorData } from "@/lib/team";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -25,8 +26,10 @@ export default function UserAuthGuard({ children }: Props) {
           return;
         }
         // set user data
-        const { username, team, role, score, team_score } = res.data["data"];
-        setUser({ username, team, role, score, team_score });
+        const { username, team, role, score, teamScore } = res.data["data"];
+        const teamKey = team as keyof typeof teamColorData;
+        const logoUrl = `/assets/images/teams/Team${teamColorData[teamKey].name}.png`;
+        setUser({ username, team, role, score, teamScore, logoUrl });
       } catch {
         setUser(null);
         router.push("/login");
