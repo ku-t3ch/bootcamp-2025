@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { Image } from "@heroui/react";
 import { User } from "@/types/user";
+import axiosClient from "@/lib/axios";
+
 
 type UserInfo = User & {
   logo_url: string;
@@ -19,22 +21,23 @@ const teamData = {
   "f": { name: "Purple" },
 };
 
-const mockUser: UserInfo = {
-  username: "User1",
-  role: "user",
-  team: "a",
-  logo_url: "/assets/images/teams/TeamPink.png",
-  score: 10,
-  team_score: 20,
-};
 
 export default function UserInfo({setTeamId}: {setTeamId: React.Dispatch<React.SetStateAction<string | null>> }) {
   const [user, setUser] = useState<UserInfo | null>(null);
 
   useEffect(() => {
-    // fetch '/auth/me'
-    setUser(mockUser);
-    setTeamId(mockUser.team);
+    const fetchUser = async () => {
+      try {
+        const res = await axiosClient.get('/auth/me');
+        if (res.data) {
+          setUser(res.data["data"]);
+          console.log(res.data["data"]);
+        }
+      } catch (error) {
+        setUser(null);
+      }
+    }
+    fetchUser();
   }, []);
 
   if (!user) {
