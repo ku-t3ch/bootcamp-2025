@@ -30,8 +30,11 @@ export default function UserInfo({setTeamId}: {setTeamId: React.Dispatch<React.S
       try {
         const res = await axiosClient.get('/auth/me');
         if (res.data) {
+          const data = res.data["data"];
+          const teamKey = data.team as keyof typeof teamData;
+          data["logo_url"] = `/assets/images/teams/Team${teamData[teamKey].name}.png`;
           setUser(res.data["data"]);
-          console.log(res.data["data"]);
+          setTeamId(res.data["data"].team);
         }
       } catch (error) {
         setUser(null);
@@ -49,7 +52,7 @@ export default function UserInfo({setTeamId}: {setTeamId: React.Dispatch<React.S
       className="w-full bg-transparent border-2 rounded-[12px] px-8 py-4 flex items-center z-10 gap-4 border-[#9E99F2] shadow-[0_0_20px_10px_rgba(159,157,184,0.5)]"
     >
       <Image 
-        src={user.logo_url} 
+        src={`/assets/images/teams/Team${user.team}.png`}   
         alt="Team Logo" 
         width="100"
         height="100" 
