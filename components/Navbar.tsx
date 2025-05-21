@@ -111,7 +111,7 @@ const Navbar = () => {
             ติดต่อเรา
           </Link>
           <Link
-            href="/dashboard"
+            href="/leaderboard"
             onClick={handleClick}
             className="flex items-center gap-1"
           >
