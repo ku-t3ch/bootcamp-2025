@@ -9,7 +9,7 @@ import axiosClient from "@/lib/axios";
 type UserInfo = User & {
   logo_url: string;
   score: number;
-  team_score: number;
+  teamScore: number;
 };
 
 const teamData = {
@@ -62,7 +62,7 @@ export default function UserInfo({setTeamId}: {setTeamId: React.Dispatch<React.S
           <h4 className="font-bold text-lg">{user.username}</h4>
           <h5>Team {user.team.toUpperCase()}</h5>
           <h5>My Score: {user.score}</h5>
-          <h5>Team Score: {user.team_score}</h5>
+          <h5>Team Score: {user.teamScore}</h5>
       </div>
     </div>
         
