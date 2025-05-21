@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
+@config "../tailwind.config.ts";
 
 .swiper-slide:not(.swiper-slide-active) {
   @apply !grayscale;
