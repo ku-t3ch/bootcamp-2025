@@ -1,32 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Image } from "@heroui/react";
 import { User } from "@/types/user";
+import useUserStore from "@/hooks/userStore";
 
 
 type UserInfo = User & {
   logo_url: string;
   score: number;
-  team_score: number;
+  teamScore: number;
 };
 
-const mockUser: UserInfo = {
-  username: "User1",
-  role: "user",
-  team: "Team A",
-  logo_url: "/assets/images/teams/TeamPink.png",
-  score: 10,
-  team_score: 20,
-};
 
-export default function UserInfo() {
-  const [user, setUser] = useState<UserInfo | null>(null);
+export default function UserInfo({setTeamId}: {setTeamId: React.Dispatch<React.SetStateAction<string | null>> }) {
+  const { user } = useUserStore();
 
   useEffect(() => {
-    // fetch '/auth/me'
-    setUser(mockUser);
-  }, []);
+    setTeamId(user?.team || null)
+  }, [setTeamId, user?.team]);  
 
   if (!user) {
     return <p>Loading...</p>;
@@ -34,23 +26,20 @@ export default function UserInfo() {
 
   return (
     <div 
-        className="lg:min-w-[700px] md:min-w-[360px] sm:min-w-[360px] bg-transparent border-2 rounded-[12px] px-8 py-4 flex flex-col items-center gap-8 z-10
-        border-[#9E99F2] shadow-[0_0_20px_10px_rgba(159,157,184,0.5)]">
-            <div className="grid grid-cols-4 lg:gap-15 md:gap-10 sm:gap-10">
-                <div className="flex justify-start">
-                    <Image 
-                    src={user.logo_url} 
-                    alt="Team Logo" 
-                    width="100"
-                    height="100" />
-                </div>
-                <div className="col-span-3 flex flex-col gap-1 items-start justify-center">
-                    <h4 className="text-white [font-family:var(--font-anta)]">{user.username}</h4>
-                    <h5 className="text-white [font-family:var(--font-anta)]">{user.team}</h5>
-                    <h5 className="text-white [font-family:var(--font-anta)]">My Score: {user.score}</h5>
-                    <h5 className="text-white [font-family:var(--font-anta)]">Team Score: {user.team_score}</h5>
-                </div>
-            </div>
+      className="w-full bg-transparent border-2 rounded-[12px] px-8 py-4 flex items-center z-10 gap-4 border-[#9E99F2] shadow-[0_0_20px_10px_rgba(159,157,184,0.5)]"
+    >
+      <Image 
+        src={user.logoUrl}   
+        alt="Team Logo" 
+        width="100"
+        height="100" 
+      />
+      <div className="flex flex-col text-white [font-family:var(--font-anta)]">
+          <h4 className="font-bold text-lg">{user.username}</h4>
+          <h5>Team {user.team.toUpperCase()}</h5>
+          <h5>My Score: {user.score}</h5>
+          <h5>Team Score: {user.teamScore}</h5>
+      </div>
     </div>
         
   );

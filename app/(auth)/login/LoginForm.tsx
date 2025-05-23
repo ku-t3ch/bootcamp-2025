@@ -20,7 +20,7 @@ export default function LoginForm() {
     },
   });
 
-  const { setUser } = useUserStore();
+  const { setUser, user } = useUserStore();
 
   const onSubmit = async (values: LoginSchemaInput) => {
     // Toast
