@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const LoadingScreen = () => {
   return (
     <div className="relative min-h-screen bg-gradient-to-t from-black to-[#110622] bg-no-repeat bg-cover bg-center">

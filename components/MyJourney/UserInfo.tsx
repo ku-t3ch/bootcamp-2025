@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Image } from "@heroui/react";
 import { User } from "@/types/user";
 import useUserStore from "@/hooks/userStore";
