@@ -18,7 +18,7 @@ export default function UserInfo({setTeamId}: {setTeamId: React.Dispatch<React.S
 
   useEffect(() => {
     setTeamId(user?.team || null)
-  }, [setTeamId]);  
+  }, [setTeamId, user?.team]);  
 
   if (!user) {
     return <p>Loading...</p>;
