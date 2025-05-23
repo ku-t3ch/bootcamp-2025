@@ -5,6 +5,7 @@ import axiosClient from "@/lib/axios";
 import { teamColorData } from "@/lib/team";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import LoadingScreen from "@/components/MyJourney/Loading";
 
 type Props = {
   children: React.ReactNode;
@@ -40,7 +41,7 @@ export default function UserAuthGuard({ children }: Props) {
     fetchUser();
   }, [setUser, router]);
 
-  if (loading) return <></>;
+  if (loading) return <><LoadingScreen /></>;
 
   return children;
 }
