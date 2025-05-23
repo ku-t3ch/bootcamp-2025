@@ -10,7 +10,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
-import { div } from "framer-motion/client";
 
 const images = [
   "/assets/images/activity/c1.webp",

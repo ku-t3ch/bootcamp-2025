@@ -20,13 +20,7 @@ const teamImageMap: Record<string, string> = {
 
 export default function LeaderboardDetail() {
   const [leaderboard, setLeaderboard] = useState<Team[]>([]);
-  const [topLength, setTopLength] = useState<number>(3); // Top three
-
-  // const mockdata = [
-  //     { team: 'Team A', score: 78 },
-  //     { team: 'Team B', score: 74 },
-  //     { team: 'Team C', score: 71 },
-  // ]
+  const [topLength] = useState<number>(3); // Top three
 
   //Fetch Data
   useEffect(() => {
