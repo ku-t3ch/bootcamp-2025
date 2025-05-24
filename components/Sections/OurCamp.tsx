@@ -58,13 +58,9 @@ const OurCamp = () => {
         <div className="text-white relative max-w-[500px] space-y-5">
           <h1 className="text-5xl">ค่ายของเรา</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            vestibulum ante sit amet libero pellentesque lobortis. Sed vel
-            turpis leo. Nullam euismod ante turpis, vel vulputate ex maximus
-            eget. Integer aliquet ex vitae ipsum imperdiet dictum. Nulla feugiat
-            gravida enim, ac sodales urna malesuada in. Integer est quam,
-            scelerisque feugiat ipsum vitae, ornare rhoncus arcu. Proin lacinia
-            rutrum dictum.
+          Boot Camp#1 x SKR
+โรงเรียนสกลราชวิทยานุกูล ร่วมกับ กลุ่มกิจกรรมเทคโนโลยี มหาวิทยาลัยเกษตรศาสตร์ จัดบูทแคมป์ ครั้งที่ 1 ณ มหาวิทยาลัยเกษตรศาสตร์
+โดยมีวัตถุประสงค์ เพื่อให้นักเรียนสายห้องเรียนพิเศษวิทยาการคอมพิวเตอร์ (CS) ได้ฝึกการทำงานร่วมกันผ่านการทำกิจกรรมในสภาพแวดล้อมของมหาวิทยาลัย และ นำความรู้ที่ได้เรียนมา มาลงมือทำจริงผ่านการทำ Workshop ทั้งหมด 4 สาย
           </p>
         </div>
         <div className="w-full h-[400px] md:h-[600px] xl:content-center content-start">
