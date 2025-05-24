@@ -3,9 +3,9 @@ import TeamTable from "./TeamTable";
 import BackButton from "./BackButton";
 
 type Props = {
-  params: {
+  params: Promise<{
     stationId: string;
-  };
+  }>;
 };
 
 export default async function Page({ params }: Props) {
@@ -32,7 +32,7 @@ export default async function Page({ params }: Props) {
           </h1>
         </div>
       </div>
-      
+
       {/* Team selector */}
       <TeamTable />
     </div>
