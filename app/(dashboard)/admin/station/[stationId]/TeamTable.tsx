@@ -1,5 +1,5 @@
 "use client";
-import { useRouter, useParams } from "next/navigation";
+
 import { useEffect, useState } from "react";
 import TeamAccordion from "./TeamAccordion";
 import { Team } from "@/types/team";
@@ -29,8 +29,6 @@ const teamColorMap: Record<string, string> = {
 };
 
 export default function TeamTable() {
-  const router = useRouter();
-  const params = useParams();
   const [teams, setTeams] = useState<Team[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -80,10 +78,6 @@ export default function TeamTable() {
   useEffect(() => {
     fetchTeams();
   }, []);
-
-  const handleBack = () => {
-    router.back();
-  };
 
   return (
     <div className="w-full max-w-xl px-4 sm:px-6 lg:px-0 mx-auto relative">

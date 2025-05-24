@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { Button, Input } from "@heroui/react";
-import axiosClient from "@/lib/axios"; 
-import { useParams } from 'next/navigation';
+import axiosClient from "@/lib/axios";
+import { useParams } from "next/navigation";
+import axios from "axios";
 
 export default function ScoreInput() {
   const params = useParams();
@@ -27,24 +28,28 @@ export default function ScoreInput() {
     setIsSubmitting(true);
     setError(null);
     setSuccess(null);
-    
+
     try {
-      const response = await axiosClient.post("/score/add", {
+      await axiosClient.post("/score/add", {
         username: username.trim(),
         score: score,
-        stationId: stationId 
+        stationId: stationId,
       });
 
       setSuccess(`เพิ่มคะแนนให้ ${username} สำเร็จแล้ว (${score} คะแนน)`);
       setUsername("");
       setScore(1);
-    } catch (error: any) {
-      if (error.response) {
-        setError(error.response.data?.message || "ไม่สามารถเพิ่มคะแนนได้");
-      } else if (error.request) {
-        setError("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้");
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          setError(error.response.data?.message || "ไม่สามารถเพิ่มคะแนนได้");
+        } else if (error.request) {
+          setError("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้");
+        } else {
+          setError("เกิดข้อผิดพลาดในการสร้างคำขอ");
+        }
       } else {
-        setError("เกิดข้อผิดพลาดในการสร้างคำขอ");
+        setError("เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
       }
     } finally {
       setIsSubmitting(false);
@@ -53,11 +58,15 @@ export default function ScoreInput() {
 
   return (
     <div className="bg-black/50 border border-white/20 rounded-xl w-full max-w-2xl mx-auto p-6 space-y-3 shadow-[0_0_40px_10px_rgba(255,0,255,0.3)]">
-      <div className="text-center text-white font-bold text-sm sm:text-base">การเพิ่มคะแนน</div>
-      
+      <div className="text-center text-white font-bold text-sm sm:text-base">
+        การเพิ่มคะแนน
+      </div>
+
       {error && <div className="text-red-400 text-sm text-center">{error}</div>}
-      {success && <div className="text-green-400 text-sm text-center">{success}</div>}
-      
+      {success && (
+        <div className="text-green-400 text-sm text-center">{success}</div>
+      )}
+
       <div className="flex flex-col sm:flex-row items-center gap-3">
         {/* Username input */}
         <div className="w-full sm:flex-grow">
@@ -69,10 +78,10 @@ export default function ScoreInput() {
             disabled={isSubmitting}
           />
         </div>
-        
+
         {/* Score control */}
         <div className="flex items-center bg-white rounded-full h-10 w-[120px] mt-2 sm:mt-0">
-          <button 
+          <button
             onClick={decreaseScore}
             className={`flex items-center justify-center h-full px-3 font-bold text-xl ${
               score <= 1 || isSubmitting ? "text-gray-400" : "text-gray-700"
@@ -85,7 +94,7 @@ export default function ScoreInput() {
           <div className="flex-grow flex items-center justify-center">
             <span className="text-black font-medium text-lg">{score}</span>
           </div>
-          <button 
+          <button
             onClick={increaseScore}
             className={`flex items-center justify-center h-full px-3 font-bold text-xl ${
               score >= 5 || isSubmitting ? "text-gray-400" : "text-gray-700"
@@ -97,7 +106,7 @@ export default function ScoreInput() {
           </button>
         </div>
       </div>
-      
+
       {/* Submit button */}
       <Button
         onPress={handleSubmit}

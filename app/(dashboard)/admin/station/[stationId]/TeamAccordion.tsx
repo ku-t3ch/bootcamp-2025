@@ -3,7 +3,9 @@ import { Team } from "@/types/team";
 import { Image } from "@heroui/react";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import axiosClient from "@/lib/axios"; 
+import axiosClient from "@/lib/axios";
+import axios from "axios";
+import { toast } from "sonner";
 
 type Props = {
   team: Team;
@@ -37,14 +39,14 @@ export default function TeamAccordion(props: Props) {
   };
 
   const getTeamId = () => {
-    return props.team.identifier.split(' ')[1].toLowerCase();
+    return props.team.identifier.split(" ")[1].toLowerCase();
   };
   const checkCurrentStatus = async () => {
     setIsCheckingStatus(true);
     try {
-      const teamId = getTeamId();   
+      const teamId = getTeamId();
       const response = await axiosClient.get(
-        `/station/${teamId}/${stationId}/status`
+        `/station/${teamId}/${stationId}/status`,
       );
       if (response.data.data && response.data.data.status === 1) {
         setIsUnlocked(true);
@@ -63,7 +65,7 @@ export default function TeamAccordion(props: Props) {
       const teamId = getTeamId();
       const response = await axiosClient.post(
         `/station/${teamId}/${stationId}/status`,
-        { status: 1 }
+        { status: 1 },
       );
       if (response.data.success) {
         setIsUnlocked(true);
@@ -72,9 +74,13 @@ export default function TeamAccordion(props: Props) {
       } else {
         throw new Error(response.data.message || "ไม่สามารถปลดล็อกได้");
       }
-    } catch (error) {
-      setIsLoading(false);
-      alert("ไม่สามารถปลดล็อกสถานีได้ กรุณาลองใหม่อีกครั้ง");
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        setIsLoading(false);
+        toast.error("ไม่สามารถปลดล็อกสถานีได้ กรุณาลองใหม่อีกครั้ง");
+      } else {
+        toast.error("เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ");
+      }
     }
   };
 
@@ -117,7 +123,7 @@ export default function TeamAccordion(props: Props) {
             </button>
           </div>
         )}
-        
+
         {/* แสดงตัวโหลดระหว่างตรวจสอบสถานะ */}
         {isCheckingStatus && (
           <div className="mt-2 sm:mt-3 flex justify-center min-h-[32px]">
