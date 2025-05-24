@@ -94,7 +94,7 @@ export default function LoginForm() {
       {/* Login */}
       <div className="mx-auto w-[150px]">
         <Button type="submit" className="w-full btn-primary">
-          เข้าสู่ระบบ
+          Log in
         </Button>
       </div>
     </form>

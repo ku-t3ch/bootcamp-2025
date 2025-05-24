@@ -1,34 +1,43 @@
 "use client";
 
-import useUserStore from "@/hooks/userStore";
 import { Card, CardBody, CardFooter } from "@heroui/card";
-import { Image } from "@heroui/react";
-import { useRouter } from "next/navigation";
+import { Button, Image, Link } from "@heroui/react";
+import ScoreInput from "./station/[stationId]/AddScore";
 
-// TODO: move type to types folder
 type Station = {
   id: number;
   name: string;
+  image: string;
 };
 
-// Mock data
 const mockStations = [
-  { id: 1, name: "สถานี A" },
-  { id: 2, name: "สถานี B" },
-  { id: 3, name: "สถานี C" },
-  { id: 4, name: "สถานี D" },
-  { id: 5, name: "สถานี E" },
-  { id: 6, name: "สถานี F" },
+  { id: 1, name: "Station 1", image: "/assets/images/teams/TeamBlue.png" },
+  { id: 2, name: "Station 2", image: "/assets/images/teams/TeamGreen.png" },
+  { id: 3, name: "Station 3", image: "/assets/images/teams/TeamOrange.png" },
+  { id: 4, name: "Station 4", image: "/assets/images/teams/TeamPink.png" },
+  { id: 5, name: "Station 5", image: "/assets/images/teams/TeamPurple.png" },
+  { id: 6, name: "Station 6", image: "/assets/images/teams/TeamYellow.png" },
 ] as Station[];
 
-export default function StationSelector() {
-  const { user } = useUserStore();
+const StationColors : Record<string, string> = {
+  "Station 1": "shadow-[0_0_15px_5px_rgba(59,130,246,0.5)]", // สีฟ้า
+  "Station 2": "shadow-[0_0_15px_5px_rgba(34,197,94,0.5)]", // สีเขียว
+  "Station 3": "shadow-[0_0_15px_5px_rgba(249,115,22,0.5)]", // สีส้ม
+  "Station 4": "shadow-[0_0_15px_5px_rgba(236,72,153,0.5)]", // สีชมพู
+  "Station 5": "shadow-[0_0_15px_5px_rgba(168,85,247,0.5)]", // สีม่วง
+  "Station 6": "shadow-[0_0_15px_5px_rgba(234,179,8,0.5)]", // สีเหลือง
+};
 
+export default function StationSelector() {
   return (
-    <section className="w-full">
-      <h1 className="text-center text-3xl">เลือกสถานีที่คุณประจำอยู่</h1>
-      <p>{user?.username}</p>
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+    <section className="w-full max-w-5xl mx-auto space-y-10 py-10">
+      <h1 className="text-center text-3xl text-white [font-family:var(--font-anta)]">
+        Stamp Station
+      </h1>
+      <div className="flex justify-center">
+        <ScoreInput />
+      </div>
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-14 justify-center items-center">
         {mockStations.map((station) => (
           <StationSelectorItem key={station.id} data={station} />
         ))}
@@ -38,33 +47,36 @@ export default function StationSelector() {
 }
 
 const StationSelectorItem = ({ data }: { data: Station }) => {
-  const { push } = useRouter();
-
-  const handleClick = () => {
-    push(`/admin/station/${data.id}`);
-  };
+  const shadowClass =
+    StationColors[data.name] ||
+    "shadow-[0_0_15px_5px_rgba(255,255,255,0.3)]";
 
   return (
     <Card
-      isFooterBlurred
-      isPressable
-      className="border-none"
+      className={`max-w-[120px] md:max-w-[140px] bg-transparent border border-white/20 mx-auto ${shadowClass}`}
       radius="lg"
-      onPress={handleClick}
+      shadow="none"
     >
-      <CardBody>
-        <Image
-          alt={data.name}
-          className="object-cover"
-          height={200}
-          src="https://github.com/ku-t3ch.png"
-          width={200}
-        />
-      </CardBody>
-      <CardFooter className="justify-center before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
-        <p className="text-sm light:text-white/80 dark:text-zinc-800">
+      <CardBody className="py-2 px-2 flex flex-col items-center">
+        <div className="flex justify-center w-full ">
+          <Image
+            alt={data.name}
+            className="object-contain h-16 w-16"
+            src={data.image}
+          />
+        </div>
+        <h2 className="text-white text-center mt-1 text-xs md:text-sm">
           {data.name}
-        </p>
+        </h2>
+      </CardBody>
+      <CardFooter className="justify-center overflow-hidden py-1 bottom-1 w-[calc(100%_-_8px)] ml-1 mb-2 z-10">
+        <Button
+          as={Link}
+          href={`/admin/station/${data.id}`}
+          className="bg-[#F182D2] hover:bg-[#F182D2]/90 text-white h-7 text-xs w-full mb-2"
+        >
+          ดูรายละเอียด
+        </Button>
       </CardFooter>
     </Card>
   );
