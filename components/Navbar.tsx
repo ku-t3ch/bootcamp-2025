@@ -36,19 +36,19 @@ const Navbar = () => {
 
       <div className="lg:flex hidden items-center justify-between gap-14">
         <div className="hidden lg:flex space-x-10">
-          <Link href="#bootcamp-info" className="hover:text-gray-300">
+          <Link href="/#bootcamp-info" className="hover:text-gray-300">
             Boot Camp คืออะไร?
           </Link>
-          <Link href="#timeline" className="hover:text-gray-300">
+          <Link href="/#timeline" className="hover:text-gray-300">
             ไทม์ไลน์
           </Link>
-          <Link href="#ourcamp" className="hover:text-gray-300">
+          <Link href="/#ourcamp" className="hover:text-gray-300">
             ค่ายของเรา
           </Link>
-          <Link href="#sponsors" className="hover:text-gray-300">
+          <Link href="/#sponsors" className="hover:text-gray-300">
             ผู้สนับสนุน
           </Link>
-          <Link href="#contact" className="hover:text-gray-300">
+          <Link href="/#sponsors" className="hover:text-gray-300">
             ติดต่อเรา
           </Link>
         </div>

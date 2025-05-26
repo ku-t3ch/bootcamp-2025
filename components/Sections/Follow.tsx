@@ -31,7 +31,7 @@ const socials: SocialItem[] = [
 
 const Follow = () => {
   return (
-    <div className="py-20 relative bg-black flex items-center gap-10 flex-col">
+    <div className="py-20 relative bg-black flex items-center gap-10 flex-col" id="contact">
       <div className="absolute bg-[url(/assets/images/TimelineBG.gif)] inset-0 bg-cover bg-center opacity-30 z-0"></div>
       <h1 className="text-white text-5xl text-center relative">
         ติดตามข่าวสาร
