@@ -95,19 +95,19 @@ const Navbar = () => {
 
       {isOpen && (
         <div className="absolute top-18 right-15 w-64 bg-[#111828] border-gray-700 border text-white rounded-xl shadow-lg flex flex-col py-4 px-6 space-y-4 z-999 *:hover:text-gray-500 *:transition-colors">
-          <Link href="#bootcamp-info" onClick={handleClick}>
+          <Link href="/#bootcamp-info" onClick={handleClick}>
             Boot Camp คืออะไร?
           </Link>
-          <Link href="#timeline" onClick={handleClick}>
+          <Link href="/#timeline" onClick={handleClick}>
             ไทม์ไลน์
           </Link>
-          <Link href="#ourcamp" onClick={handleClick}>
+          <Link href="/#ourcamp" onClick={handleClick}>
             ค่ายของเรา
           </Link>
-          <Link href="#sponsors" onClick={handleClick}>
+          <Link href="/#sponsors" onClick={handleClick}>
             ผู้สนับสนุน
           </Link>
-          <Link href="#contact-us" onClick={handleClick}>
+          <Link href="/#sponsors" onClick={handleClick}>
             ติดต่อเรา
           </Link>
           <Link
