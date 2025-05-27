@@ -48,7 +48,7 @@ const Navbar = () => {
           <Link href="/#sponsors" className="hover:text-gray-300">
             ผู้สนับสนุน
           </Link>
-          <Link href="/#sponsors" className="hover:text-gray-300">
+          <Link href="/#contact" className="hover:text-gray-300">
             ติดต่อเรา
           </Link>
         </div>
@@ -107,7 +107,7 @@ const Navbar = () => {
           <Link href="/#sponsors" onClick={handleClick}>
             ผู้สนับสนุน
           </Link>
-          <Link href="/#sponsors" onClick={handleClick}>
+          <Link href="/#contact" onClick={handleClick}>
             ติดต่อเรา
           </Link>
           <Link
