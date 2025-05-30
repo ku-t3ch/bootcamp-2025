@@ -2,10 +2,10 @@ import React from "react";
 import Image from "next/image";
 
 const stationData = {
-  "station1": { name: ["วิทย์"], image: "Science.jpg", colorLock: "C47FB1", colorUnlock: "F182D2" },
+  "station1": { name: ["วิทยาศาสตร์"], image: "Science.jpg", colorLock: "C47FB1", colorUnlock: "F182D2" },
   "station2": { name: ["ดงตาลแคมป์"], image: "engineering.jpg", colorLock: "AE5E37", colorUnlock: "DD733E" },
   "station3": { name: ["เสวนาเปิดโลก", "แพทย์เกษตร", "การแพทย์ วิจัย", "และเทคโนโลยี"], image: "medicine.webp", colorLock: "C8B271", colorUnlock: "F5DB68" },
-  "station4": { name: ["เทคนิคสัตวะ"], image: "vettech.jpg", colorLock: "7DB57E", colorUnlock: "65D766" },
+  "station4": { name: ["เทคนิคสัตวแพทย์"], image: "vettech.jpg", colorLock: "7DB57E", colorUnlock: "65D766" },
   "station5": { name: ["ก็มาดิบัส"], image: "bus.jpg", colorLock: "84ADBA", colorUnlock: "4EB2D0" },
   "station6": { name: ["one country,", "one clip"], image: "Humanities.jpg", colorLock: "8B6DB5", colorUnlock: "BC50DD" },
 };
@@ -30,13 +30,13 @@ const Station = ({stationId, status}: StationProps) => {
             src={`/assets/images/stations/${station.image}`}
             alt="logo"
             fill
-            className={`${status === 0 ? "grayscale-[70%]" : ""} object-contain rounded-full`}
+            className={`${status === 0 ? "grayscale-[90%]" : ""} object-contain rounded-full`}
             sizes="96px"
           />
         </div>
         <h1
           className={`text-center ${
-            Array.isArray(station.name) && station.name.length > 2 ? "text-md" : "text-xl"
+            Array.isArray(station.name) && station.name.length > 2 ? "text-md" : "text-[18px]"
           }`}
           style={{ color: `#${stationColor}`}}
         >
