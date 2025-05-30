@@ -11,12 +11,12 @@ type Station = {
 };
 
 const mockStations = [
-  { id: 1, name: "Station 1", image: "/assets/images/teams/TeamBlue.png" },
-  { id: 2, name: "Station 2", image: "/assets/images/teams/TeamGreen.png" },
-  { id: 3, name: "Station 3", image: "/assets/images/teams/TeamOrange.png" },
-  { id: 4, name: "Station 4", image: "/assets/images/teams/TeamPink.png" },
-  { id: 5, name: "Station 5", image: "/assets/images/teams/TeamPurple.png" },
-  { id: 6, name: "Station 6", image: "/assets/images/teams/TeamYellow.png" },
+  { id: 1, name: "วิทยาศาสตร์", image: "/assets/images/stations/Science.jpg" },
+  { id: 2, name: "ดงตาลแคมป์", image: "/assets/images/stations/engineering.jpg" },
+  { id: 3, name: "เสวนาเปิดโลกแพทย์เกษตร การแพทย์ วิจัย และเทคโนโลยี", image: "/assets/images/stations/medicine.webp" },
+  { id: 4, name: "เทคนิคสัตวแพทย์", image: "/assets/images/stations/vettech.jpg" },
+  { id: 5, name: "ก็มาดิบัส", image: "/assets/images/stations/bus.jpg" },
+  { id: 6, name: "one country, one clip", image: "/assets/images/stations/Humanities.jpg" },
 ] as Station[];
 
 const StationColors : Record<string, string> = {
@@ -53,21 +53,23 @@ const StationSelectorItem = ({ data }: { data: Station }) => {
 
   return (
     <Card
-      className={`max-w-[120px] md:max-w-[140px] bg-transparent border border-white/20 mx-auto ${shadowClass}`}
+      className={`max-w-[120px] md:max-w-[140px] h-[180px] bg-transparent border border-white/20 mx-auto ${shadowClass}`}
       radius="lg"
       shadow="none"
     >
-      <CardBody className="py-2 px-2 flex flex-col items-center">
-        <div className="flex justify-center w-full ">
+      <CardBody className="py-2 px-2 flex flex-col items-center justify-between h-full">
+        <div className="flex justify-center w-full pt-2">
           <Image
             alt={data.name}
             className="object-contain h-16 w-16"
             src={data.image}
           />
         </div>
-        <h2 className="text-white text-center mt-1 text-xs md:text-sm">
-          {data.name}
-        </h2>
+        <div className="flex-grow flex items-center">
+          <h2 className="text-white text-center mt-1 text-xs md:text-sm line-clamp-2">
+            {data.name}
+          </h2>
+        </div>
       </CardBody>
       <CardFooter className="justify-center overflow-hidden py-1 bottom-1 w-[calc(100%_-_8px)] ml-1 mb-2 z-10">
         <Button
