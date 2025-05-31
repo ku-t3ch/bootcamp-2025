@@ -1,5 +1,7 @@
 import StationSelector from "./StationSelector";
 
+export const dynamic = "force-dynamic";
+
 export default function Page() {
   return (
     <div className="min-h-screen flex justify-center items-center">
