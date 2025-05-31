@@ -93,7 +93,7 @@ export default function LoginForm() {
       />
       {/* Login */}
       <div className="mx-auto w-[150px]">
-        <Button type="submit" className="w-full btn-primary">
+        <Button type="submit" className="w-full btn-primary" isDisabled={form.formState.isSubmitting}>
           Log in
         </Button>
       </div>
