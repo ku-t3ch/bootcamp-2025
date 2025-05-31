@@ -1,8 +1,11 @@
 "use client";
+
 import UserInfo from "@/components/MyJourney/UserInfo";
 import AllStation from "@/components/MyJourney/AllStation";
 import LoadingScreen from "@/components/MyJourney/Loading";
 import { useState } from "react";
+
+export const dynamic = "force-dynamic";
 
 export default function MyJourney() {
   const [teamId, setTeamId] = useState<string | null>(null);
