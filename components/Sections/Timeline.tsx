@@ -4,105 +4,117 @@ import TimelineItem from "@/components/Timeline/TimelineItem";
 
 const timelines: TimelineData[] = [
   {
-    title: "Workshop (I)",
+    title: "D1 : เปิดโลกการเรียนรู้และค้นหาตัวเอง",
     date: "02 June 2025",
     circleColor: "#fff",
     lineColorTo: "#6D1CC1",
     details: [
       {
-        time: "07:00 - 07:30",
+        time: "08:00 - 08:30",
         detail: "ลงทะเบียนเข้าร่วมกิจกรรม ",
       },
       {
-        time: "07:30 - 08:15",
-        detail: "พิธีเปิด",
+        time: "08:30 - 08:45",
+        detail: "เปิดค่าย วันที่ 1",
       },
       {
-        time: "08:30 - 09:00",
-        detail: "กิจกรรมบรรยายความเชื่อมโยงระหว่างคณะและเทคโนโลยี",
+        time: "08:45 - 09:00",
+        detail: "BREAK",
       },
       {
-        time: "09:00 - 11:00",
-        detail: " เริ่มกิจกรรมมหกรรม “Tech Tour”",
+        time: "09:00 - 09:30",
+        detail: "Ice Breaking",
       },
       {
-        time: "11:00 - 11:45",
-        detail: "พักรับประทานอาหารกลางวัน",
+        time: "09:30 - 11:30",
+        detail: "TECH TOUR Part 1",
       },
       {
-        time: "11:45 - 13:45",
-        detail: "มหกรรม “Tech Tour” (ต่อ) ",
+        time: "11:30 - 12:15",
+        detail: "LUNCH",
       },
       {
-        time: "13:45 - 14:00",
-        detail: "พักรับประทานอาหารว่าง",
+        time: "12:15 - 14:15",
+        detail: "TECH TOUR Part 2",
       },
       {
-        time: "14:00 - 16:15",
-        detail: "มหกรรม “Tech Tour” (ต่อ)",
+        time: "14:15 - 14:30",
+        detail: "BREAK",
       },
       {
-        time: "16:15 - 17:00",
-        detail: "พักรับประทานอาหารเย็น",
+        time: "14:30 - 16:45",
+        detail: "TECH TOUR Part 3",
       },
       {
-        time: "17:00 - 20:00",
-        detail: "กิจกรรมนัทนาการ",
+        time: "16:45 - 17:30",
+        detail: "DINNER",
+      },
+      {
+        time: "17:30 - 19:00",
+        detail: "กิจกรรมสันทนาการ",
+      },
+      {
+        time: "19:00 - 19:15",
+        detail: "สรุปกิจกรรม",
       },
     ],
   },
   {
-    title: "Workshop (II)",
+    title: "D2 : ทดลองทำงานจริง ค้นพบคณะที่ใช่",
     date: "03 June 2025",
     circleColor: "#6D1CC1",
     details: [
       {
-        time: "07:30-07:45",
-        detail: "แจ้งรายละเอียดแผนการของวัน",
+        time: "08:00 - 08:15",
+        detail: "เปิดค่าย วันที่ 2",
       },
       {
-        time: "07:45 - 10.30",
-        detail: "",
+        time: "08:15 - 09:15",
+        detail: "Tracks Session",
+      },
+      {
+        time: "09:15 - 10:30",
+        detail: "WORKSHOP Part 1",
       },
       {
         time: "10:30 - 10:45",
-        detail: "พักรับประทานอาหารว่าง",
+        detail: "BREAK",
       },
       {
         time: "10:45 - 12:45",
-        detail: "",
+        detail: "WORKSHOP Part 2",
       },
       {
         time: "12:45 - 13:30",
-        detail: "พักรับประทานอาหารกลางวัน",
+        detail: "LUNCH",
       },
       {
-        time: "13:30 - 16:45",
-        detail: "ลงมือพัฒนาโปรเจค ",
+        time: "13:30 - 14:30",
+        detail: "WORKSHOP Part 3",
       },
       {
         time: "14:30 - 14:45",
-        detail: "พักรับประทานว่าง",
+        detail: "BREAK",
+      },
+      {
+        time: "14:45 - 16:45",
+        detail: "WORKSHOP Part 4",
       },
       {
         time: "16:45 - 17:30",
-        detail: "พักรับประทานอาหารเย็น",
+        detail: "DINNER",
       },
       {
         time: "17:30 - 19:00",
-        detail: "ช่วงการนำเสนอผลงาน",
+        detail: "Present WORKSHOP",
       },
       {
-        time: "19:00 - 19:10",
-        detail: "รอคณะกรรมตัดสินผลการแข่งขัน",
-      },
-      {
-        time: "19:10 - 19:20",
-        detail: "ประกาศผลการแข่งขัน",
+        time: "19:00 - 19:20",
+        detail: "ประกาศผล",
       },
       {
         time: "19:20 - 19:40",
-        detail: "พิธีปิด",
+        detail: "กิจกรรมปิดค่าย",
       },
     ],
   },
