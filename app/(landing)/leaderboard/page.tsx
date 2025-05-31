@@ -1,6 +1,8 @@
 import LeaderboardDetail from "@/components/Leaderboard/LeaderboardDetail";
 import LeaderboardHeader from "@/components/Leaderboard/LeaderboardHeader";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default function Page() {
   return (
