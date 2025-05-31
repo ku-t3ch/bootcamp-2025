@@ -9,13 +9,13 @@ interface Team {
   score: number;
 }
 
-const teamImageMap: Record<string, string> = {
-  a: "TeamPink.png",
-  b: "TeamBlue.png",
-  c: "TeamGreen.png",
-  d: "TeamYellow.png",
-  e: "TeamOrange.png",
-  f: "TeamPurple.png",
+const teamDataMap: Record<string, Record<string, string>> = {
+  a: {name: "Healix", image: "TeamPurple.png"},
+  b: {name: "Petralis", image: "TeamGreen.png"},
+  c: {name: "Scienzo", image: "TeamBlue.png"},
+  d: {name: "Enginium", image: "TeamOrange.png"},
+  e: {name: "Humaria", image: "TeamYellow.png"},
+  f: {name: "Bizora", image: "TeamPink.png"},
 };
 
 export default function LeaderboardDetail() {
@@ -52,7 +52,8 @@ export default function LeaderboardDetail() {
           const key = item.team.trim().toLowerCase()[
             item.team.trim().length - 1
           ];
-          const imageName = teamImageMap[key] || "default.png";
+          const imageName = teamDataMap[key].image || "default.png";
+          const teamName = teamDataMap[key].name
 
           return (
             <div
@@ -67,7 +68,7 @@ export default function LeaderboardDetail() {
                   height={40}
                   className="rounded-full"
                 />
-                <span className="break-all">{item.team.toUpperCase()}</span>
+                <span className="break-all">{teamName}</span>
               </div>
               <div className="text-xl font-semibold">{item.score}</div>
             </div>

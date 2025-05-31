@@ -11,21 +11,30 @@ interface LeaderboardItem {
 }
 
 const teamBorderColors = {
-  "Team A": "shadow-[0_0_15px_5px_rgba(236,72,153,0.5)]", // ทีม a = สีชมพู
-  "Team B": "shadow-[0_0_15px_5px_rgba(59,130,246,0.5)]", // ทีม b = สีฟ้า
-  "Team C": "shadow-[0_0_15px_5px_rgba(34,197,94,0.5)]", // ทีม c = สีเขียว
-  "Team D": "shadow-[0_0_15px_5px_rgba(234,179,8,0.5)]", // ทีม d = สีเหลือง
-  "Team E": "shadow-[0_0_15px_5px_rgba(249,115,22,0.5)]", // ทีม e = สีส้ม
-  "Team F": "shadow-[0_0_15px_5px_rgba(168,85,247,0.5)]", // ทีม f = สีม่วง
+  "Team A": "shadow-[0_0_15px_5px_rgba(168,85,247,0.5)]", // ทีม a = สีม่วง
+  "Team B": "shadow-[0_0_15px_5px_rgba(34,197,94,0.5)]", // ทีม b = สีเขียว
+  "Team C": "shadow-[0_0_15px_5px_rgba(59,130,246,0.5)]", // ทีม c = สีฟ้า
+  "Team D": "shadow-[0_0_15px_5px_rgba(249,115,22,0.5)]", // ทีม d = สีส้ม
+  "Team E": "shadow-[0_0_15px_5px_rgba(234,179,8,0.5)]", // ทีม e = สีเหลือง
+  "Team F": "shadow-[0_0_15px_5px_rgba(236,72,153,0.5)]", // ทีม f = สีชมพู
 };
 
 const teamColorMap: Record<string, string> = {
-  A: "Pink",
-  B: "Blue",
-  C: "Green",
-  D: "Yellow",
-  E: "Orange",
-  F: "Purple",
+  A: "Purple",
+  B: "Green",
+  C: "Blue",
+  D: "Orange",
+  E: "Yellow",
+  F: "Pink",
+};
+
+const teamNameMap: Record<string, string> = {
+  A: "Healix",
+  B: "Petralis",
+  C: "Scienzo",
+  D: "Enginium",
+  E: "Humaria",
+  F: "Bizora",
 };
 
 export default function TeamTable() {
@@ -54,7 +63,7 @@ export default function TeamTable() {
         const data = response.data;
 
         const teamData: Team = {
-          name: data.name || `ทีม ${teamId.toUpperCase()}`,
+          name: data.name || `ทีม ${teamNameMap[teamId.toUpperCase()]}`,
           identifier: `Team ${teamId.toUpperCase()}`,
           totalScore: teamScore || 0,
           logo: `/assets/images/teams/Team${
