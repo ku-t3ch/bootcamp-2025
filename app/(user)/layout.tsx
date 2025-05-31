@@ -1,11 +1,11 @@
 "use client";
 
-import UserAuthGuard from "./UserAuthGuard";
+import AuthGuard from "@/components/AuthGuard";
 
 type Props = {
   children: React.ReactNode;
 };
 
-export default function AdminLayout({ children }: Props) {
-  return <UserAuthGuard>{children}</UserAuthGuard>;
+export default function UserLayout({ children }: Props) {
+  return <AuthGuard mode="user-layout">{children}</AuthGuard>;
 }

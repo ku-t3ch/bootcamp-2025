@@ -1,6 +1,6 @@
 "use client";
 
-import AdminAuthGuard from "./AdminAuthGuard";
+import AuthGuard from "@/components/AuthGuard";
 
 type Props = {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ type Props = {
 
 export default function AdminLayout({ children }: Props) {
   return (
-    <AdminAuthGuard>
+    <AuthGuard mode="admin-layout">
       <div className="relative min-h-screen">
         <div className="absolute inset-0 bg-[url('/assets/images/TimelineBG.gif')] bg-cover bg-no-repeat bg-center bg-fixed"></div>
         <div className="absolute inset-0 bg-black/50"></div>
@@ -16,6 +16,6 @@ export default function AdminLayout({ children }: Props) {
           {children}
         </div>
       </div>
-    </AdminAuthGuard>
+    </AuthGuard>
   );
 }
