@@ -11,7 +11,7 @@ type Station = {
 };
 
 const mockStations = [
-  { id: 1, name: "วิทยาศาสตร์", image: "/assets/images/stations/Science.jpg" },
+  { id: 1, name: "วิทยาศาสตร์", image: "/assets/images/stations/science.webp" },
   { id: 2, name: "ดงตาลแคมป์", image: "/assets/images/stations/engineering.jpg" },
   { id: 3, name: "เสวนาเปิดโลกแพทย์เกษตร การแพทย์ วิจัย และเทคโนโลยี", image: "/assets/images/stations/medicine.webp" },
   { id: 4, name: "เทคนิคสัตวแพทย์", image: "/assets/images/stations/vettech.jpg" },

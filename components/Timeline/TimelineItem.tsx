@@ -30,7 +30,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   return (
     <div className="start-1/2 relative w-1/2">
       <div className="flex text-white">
-        <h1 className="text-xl xl:text-[32px] z-50 absolute right-40 md:right-64 xl:right-96 w-full overflow-x-hidden">
+        <h1 className="text-xl xl:text-[32px] z-50 absolute right-40 md:right-64 xl:right-96 w-full overflow-hidden">
           {time}
         </h1>
         <div className="">

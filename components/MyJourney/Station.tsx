@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 const stationData = {
-  "station1": { name: ["วิทยาศาสตร์"], image: "Science.jpg", colorLock: "C47FB1", colorUnlock: "F182D2" },
+  "station1": { name: ["วิทยาศาสตร์"], image: "science.webp", colorLock: "C47FB1", colorUnlock: "F182D2" },
   "station2": { name: ["ดงตาลแคมป์"], image: "engineering.jpg", colorLock: "AE5E37", colorUnlock: "DD733E" },
   "station3": { name: ["เสวนาเปิดโลก", "แพทย์เกษตร", "การแพทย์ วิจัย", "และเทคโนโลยี"], image: "medicine.webp", colorLock: "C8B271", colorUnlock: "F5DB68" },
   "station4": { name: ["เทคนิคสัตวแพทย์"], image: "vettech.jpg", colorLock: "7DB57E", colorUnlock: "65D766" },
