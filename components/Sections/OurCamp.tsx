@@ -23,6 +23,17 @@ const images = [
   "/assets/images/activity/c9.webp",
   "/assets/images/activity/c10.webp",
   "/assets/images/activity/c11.webp",
+  "/assets/images/activity/c12.jpg",
+  "/assets/images/activity/c13.jpg",
+  "/assets/images/activity/c14.jpg",
+  "/assets/images/activity/c15.jpg",
+  "/assets/images/activity/c16.jpg",
+  "/assets/images/activity/c17.jpg",
+  "/assets/images/activity/c18.jpg",
+  "/assets/images/activity/c19.jpg",
+  "/assets/images/activity/c20.jpg",
+  "/assets/images/activity/c21.jpg",
+  "/assets/images/activity/c22.jpg",
 ];
 
 const OurCamp = () => {
