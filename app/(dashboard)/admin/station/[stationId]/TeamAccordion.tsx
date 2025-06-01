@@ -1,8 +1,8 @@
 "use client";
 import { Team } from "@/types/team";
-import { Image } from "@heroui/react";
+import { Button, Image } from "@heroui/react";
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import axiosClient from "@/lib/axios";
 import axios from "axios";
 import { toast } from "sonner";
@@ -18,6 +18,8 @@ export default function TeamAccordion(props: Props) {
   const [isCheckingStatus, setIsCheckingStatus] = useState(true);
   const params = useParams();
   const stationId = params.stationId;
+
+  const router = useRouter();
 
   const getButtonGradient = () => {
     switch (props.team.identifier) {
@@ -48,8 +50,9 @@ export default function TeamAccordion(props: Props) {
       const response = await axiosClient.get(
         `/station/${teamId}/${stationId}/status`,
       );
-      if (response.data.data && parseInt(response.data.data.status) === 1) {
-        setIsUnlocked(true);
+      if (response.data.data && response.data.data.status) {
+        const status = response.data.data.status as boolean;
+        setIsUnlocked(status);
       } else {
         setIsUnlocked(false);
       }
@@ -65,12 +68,13 @@ export default function TeamAccordion(props: Props) {
       const teamId = getTeamId();
       const response = await axiosClient.post(
         `/station/${teamId}/${stationId}/status`,
-        { status: 1 },
+        { status: !isUnlocked },
       );
       if (response.data.success) {
-        setIsUnlocked(true);
+        setIsUnlocked(!isUnlocked);
         setIsLoading(false);
         await checkCurrentStatus();
+        router.refresh();
       } else {
         throw new Error(response.data.message || "ไม่สามารถปลดล็อกได้");
       }
@@ -113,14 +117,28 @@ export default function TeamAccordion(props: Props) {
         {/* Unlock Button*/}
         {!isUnlocked && !isCheckingStatus && (
           <div className="mt-2 sm:mt-3 min-h-[32px]">
-            <button
-              onClick={handleUnlock}
+            <Button
+              onPress={handleUnlock}
               disabled={isLoading}
               className={`bg-gradient-to-r ${getButtonGradient()} w-full h-7 text-white text-xs font-medium sm:text-sm py-1.5 rounded text-center`}
               aria-label="ปลดล็อก"
             >
               {isLoading ? "กำลังดำเนินการ..." : "ปลดล็อก"}
-            </button>
+            </Button>
+          </div>
+        )}
+
+        {/* Lock Button */}
+        {isUnlocked && !isCheckingStatus && (
+          <div className="mt-2 sm:mt-3 min-h-[32px]">
+            <Button
+              onPress={handleUnlock}
+              disabled={isLoading}
+              className={`bg-red-400 w-full h-7 text-white text-xs font-medium sm:text-sm py-1.5 rounded text-center`}
+              aria-label="ปลดล็อก"
+            >
+              {isLoading ? "กำลังดำเนินการ..." : "ล็อกฐาน"}
+            </Button>
           </div>
         )}
 

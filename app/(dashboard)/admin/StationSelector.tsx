@@ -53,7 +53,7 @@ const StationSelectorItem = ({ data }: { data: Station }) => {
 
   return (
     <Card
-      className={`max-w-[120px] md:max-w-[140px] h-[180px] bg-transparent border border-white/20 mx-auto ${shadowClass}`}
+      className={`w-full max-w-[120px] md:max-w-[140px] h-[180px] bg-transparent border border-white/20 mx-auto ${shadowClass}`}
       radius="lg"
       shadow="none"
     >

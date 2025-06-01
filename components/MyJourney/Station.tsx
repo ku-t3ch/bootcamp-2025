@@ -12,17 +12,17 @@ const stationData = {
 
 interface StationProps {
   stationId: string;
-  status: number;
+  status: boolean;
 };
 
 const Station = ({stationId, status}: StationProps) => {
   const station = stationData[stationId as keyof typeof stationData];
-  const stationColor = status === 0 ? station.colorLock : station.colorUnlock;
+  const stationColor = !status ? station.colorLock : station.colorUnlock;
 
   return (
     <div 
       className="w-full max-w-[220px] min-h-[300px] mx-auto bg-transparent border-2 rounded-[12px] px-8 py-4 flex flex-col items-center justify-between gap-8 z-10"
-      style={{ borderColor: `#${stationColor}`, boxShadow: `0 0 20px 3px ${status === 0 ? "#9F9DB8" : `#${stationColor}`}`, }}
+      style={{ borderColor: `#${status && stationColor}`, boxShadow: `0 0 20px 3px ${!status ? "#9F9DB8" : `#${stationColor}`}`, }}
     >
       <div className="flex flex-col items-center">
         <div className="relative w-24 h-24 mb-4">
@@ -30,7 +30,7 @@ const Station = ({stationId, status}: StationProps) => {
             src={`/assets/images/stations/${station.image}`}
             alt="logo"
             fill
-            className={`${status === 0 ? "grayscale-[90%]" : ""} object-contain rounded-full`}
+            className={`${!status ? "grayscale-[90%]" : ""} object-contain rounded-full`}
             sizes="96px"
           />
         </div>
@@ -49,9 +49,9 @@ const Station = ({stationId, status}: StationProps) => {
       </div>
       <p
         className="py-2 px-4 rounded-[8px] text-white text-xs sm:text-sm"
-        style={{ background: status === 0 ? "#9F9DB8" : `#${stationColor}` }}
+        style={{ background: !status ? "#9F9DB8" : `#${stationColor}` }}
       >
-        {status === 0 ? "ยังไม่ปลดล็อค" : "ปลดล็อคแล้ว"}
+        {!status ? "ยังไม่ปลดล็อค" : "ปลดล็อคแล้ว"}
       </p>
     </div>
   );
