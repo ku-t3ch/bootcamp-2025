@@ -5,7 +5,7 @@ import axiosClient from "@/lib/axios";
 
 type StationInfo = {
   station: string;
-  status: number;
+  status: boolean;
 };
 
 const AllStation = ({teamId}: {teamId: string}) => {
