@@ -6,13 +6,15 @@ import { GoArrowRight } from "react-icons/go";
 
 const Home = () => {
   return (
-    <div className="bg-[url(/assets/images/HomeBG.gif)] h-screen bg-no-repeat bg-cover bg-center flex items-center justify-center flex-col pb-26">
+    <div className="bg-[url(/assets/images/HomeBG.gif)] h-screen bg-no-repeat bg-cover bg-center flex flex-col justify-between items-center py-20">
+      <div className="flex-grow"></div> 
       <Image
         src="/assets/images/logo.png"
         alt="logo"
         width="800"
         height="650"
       />
+      <div className="flex-grow"></div> 
       <Button
         className="bg-[#4541BF] text-white"
         size="lg"
@@ -20,6 +22,7 @@ const Home = () => {
       >
         รายละเอียดค่าย
       </Button>
+      <div className="flex-grow-0"></div> 
     </div>
   );
 };
