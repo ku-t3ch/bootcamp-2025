@@ -2,12 +2,12 @@ import React from "react";
 import Image from "next/image";
 
 const stationData = {
-  "station1": { name: ["วิทยาศาสตร์"], image: "science.webp", colorLock: "C47FB1", colorUnlock: "F182D2" },
-  "station2": { name: ["ดงตาลแคมป์"], image: "engineering.jpg", colorLock: "AE5E37", colorUnlock: "DD733E" },
-  "station3": { name: ["เสวนาเปิดโลก", "แพทย์เกษตร", "การแพทย์ วิจัย", "และเทคโนโลยี"], image: "medicine.webp", colorLock: "C8B271", colorUnlock: "F5DB68" },
-  "station4": { name: ["เทคนิคสัตวแพทย์"], image: "vettech.jpg", colorLock: "7DB57E", colorUnlock: "65D766" },
-  "station5": { name: ["ก็มาดิบัส"], image: "bus.jpg", colorLock: "84ADBA", colorUnlock: "4EB2D0" },
-  "station6": { name: ["one country,", "one clip"], image: "Humanities.jpg", colorLock: "8B6DB5", colorUnlock: "BC50DD" },
+  "station1": { name: ["วิทยาศาสตร์"], image: "science.webp", colorLock: "E1BFD8", colorUnlock: "F182D2" },
+  "station2": { name: ["ดงตาลแคมป์"], image: "engineering.jpg", colorLock: "D6AE9B", colorUnlock: "DD733E" },
+  "station3": { name: ["เสวนาเปิดโลก", "แพทย์เกษตร", "การแพทย์ วิจัย", "และเทคโนโลยี"], image: "medicine.webp", colorLock: "E3D8B7", colorUnlock: "F5DB68" },
+  "station4": { name: ["เทคนิคสัตวแพทย์"], image: "vettech.jpg", colorLock: "BEDABE", colorUnlock: "65D766" },
+  "station5": { name: ["ก็มาดิบัส"], image: "bus.jpg", colorLock: "C1D5DC", colorUnlock: "4EB2D0" },
+  "station6": { name: ["one country,", "one clip"], image: "Humanities.jpg", colorLock: "C4B5DA", colorUnlock: "BC50DD" },
 };
 
 interface StationProps {
