@@ -48,7 +48,7 @@ export default function TeamAccordion(props: Props) {
       const response = await axiosClient.get(
         `/station/${teamId}/${stationId}/status`,
       );
-      if (response.data.data && response.data.data.status === 1) {
+      if (response.data.data && parseInt(response.data.data.status) === 1) {
         setIsUnlocked(true);
       } else {
         setIsUnlocked(false);
