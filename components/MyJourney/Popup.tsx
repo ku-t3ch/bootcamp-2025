@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
-import axios from 'axios';
 
 interface PopupProps {
   isOpen: boolean;
   onClose: () => void;
   title: string | string[];
-  description?: string;
-  buttonText?: string;
+  description?: string; 
+  buttonText?: string;  
   buttonAction?: (rating?: number, comment?: string) => void;
   color: string;
 }
@@ -15,10 +14,6 @@ interface PopupProps {
 const Popup: React.FC<PopupProps> = ({
   isOpen,
   onClose,
-  title,
-  description,
-  buttonText = "ส่งคะแนน",
-  buttonAction,
   color
 }) => {
   const [rating, setRating] = useState(0);
@@ -27,16 +22,6 @@ const Popup: React.FC<PopupProps> = ({
 
   if (!isOpen) return null;
 
-  const titleDisplay = Array.isArray(title) ? title[0] : title;
-  
-  const handleSubmit = () => {
-    if (buttonAction) {
-      buttonAction(rating, comment);
-    } else {
-      onClose();
-    }
-  };
-  
   const popupContent = (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999]">
       <div className="bg-white rounded-lg w-[300px] max-h-[90vh] overflow-y-auto p-5 border shadow-lg relative" style={{ borderColor: `#${color}` }}>
