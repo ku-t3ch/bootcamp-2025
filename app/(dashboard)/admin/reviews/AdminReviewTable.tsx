@@ -10,7 +10,6 @@ import {
   TableRow,
   TableCell,
   Pagination,
-  User,
   Avatar,
 } from "@heroui/react";
 import { useMemo, useState } from "react";
