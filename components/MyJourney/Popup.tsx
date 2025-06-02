@@ -1,3 +1,5 @@
+import axiosClient from '@/lib/axios';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -9,16 +11,34 @@ interface PopupProps {
   buttonText?: string;  
   buttonAction?: (rating?: number, comment?: string) => void;
   color: string;
+  username?: string;
+  stationId?: string;
 }
 
 const Popup: React.FC<PopupProps> = ({
   isOpen,
   onClose,
-  color
+  color,
+  username,
+  stationId
 }) => {
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [comment, setComment] = useState('');
+  const [disabled, setDisabled] = useState(false);
+
+  const handleSubmit = () => {
+    axiosClient.post('/reviews', {
+      username: username ,
+      rating: rating,
+      comment: comment,
+      stationId: stationId
+    })
+    .then(() => {
+      alert('บันทึกสำเร็จ!');
+      setDisabled(true);
+    })
+  };
 
   if (!isOpen) return null;
 
@@ -80,8 +100,18 @@ const Popup: React.FC<PopupProps> = ({
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
-          <div className='text-sm text-gray-500 mt-1 text-right'>*โปรดแคปหน้าจอไว้หลังพิมพ์เสร็จ</div>
+          
         </div>
+         <div className='text-sm text-red-500 text-center mb-[10px]'>*แคปหน้าจอก่อนส่ง</div>
+        <button 
+          className={`w-full py-2 text-white text-sm rounded-md ${rating === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+          style={{ backgroundColor: `#${color}` }}
+          onClick={handleSubmit}
+          disabled={rating === 0 || disabled}>
+            บันทึก
+        </button>
+         <div className='text-sm text-red-500 text-center mt-[10px]'>สามารถส่งได้ครั้งเดียว</div>
+
       </div>
     </div>
   );
