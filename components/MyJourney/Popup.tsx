@@ -90,21 +90,13 @@ const Popup: React.FC<PopupProps> = ({
           <textarea
             id="comment"
             rows={3}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
+            className="w-full px-3 py-2 h-50 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-opacity-50"
             placeholder="มาสะท้อนตัวตนของตัวเองกัน!"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
+          <div className='text-sm text-gray-500 mt-1 text-right'>*โปรดแคปหน้าจอไว้หลังพิมพ์เสร็จ</div>
         </div>
-        
-        <button 
-          className={`w-full py-2 text-white text-sm rounded-md ${rating === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
-          style={{ backgroundColor: `#${color}` }}
-          onClick={handleSubmit}
-          disabled={rating === 0}
-        >
-            บันทึก
-        </button>
       </div>
     </div>
   );
