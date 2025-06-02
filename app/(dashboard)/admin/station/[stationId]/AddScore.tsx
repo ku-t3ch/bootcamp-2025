@@ -110,7 +110,7 @@ export default function ScoreInput() {
       {/* Submit button */}
       <Button
         onPress={handleSubmit}
-        disabled={isSubmitting}
+        isDisabled={isSubmitting || username.length === 0}
         className="w-full bg-[#F182D2] hover:bg-[#F182D2]/90 disabled:bg-[#F182D2]/50 text-white h-10 sm:h-8 text-sm sm:text-base"
       >
         {isSubmitting ? "กำลังส่งข้อมูล..." : "Submit"}
