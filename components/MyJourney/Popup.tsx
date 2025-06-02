@@ -1,6 +1,7 @@
 import axiosClient from '@/lib/axios';
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
+import { toast } from 'sonner';
 
 interface PopupProps {
   isOpen: boolean;
@@ -25,8 +26,10 @@ const Popup: React.FC<PopupProps> = ({
   const [hoveredRating, setHoveredRating] = useState(0);
   const [comment, setComment] = useState('');
   const [disabled, setDisabled] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
     axiosClient.post('/reviews', {
       username: username ,
       rating: rating,
@@ -34,8 +37,10 @@ const Popup: React.FC<PopupProps> = ({
       stationId: stationId
     })
     .then(() => {
-      alert('บันทึกสำเร็จ!');
+      toast.success('บันทึกสำเร็จ!');
       setDisabled(true);
+    }).finally(() => {
+      setIsSubmitting(false);
     })
   };
 
@@ -105,7 +110,7 @@ const Popup: React.FC<PopupProps> = ({
           className={`w-full py-2 text-white text-sm rounded-md ${rating === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
           style={{ backgroundColor: `#${color}` }}
           onClick={handleSubmit}
-          disabled={rating === 0 || disabled}>
+          disabled={rating === 0 || disabled || isSubmitting}>
             บันทึก
         </button>
          <div className='text-sm text-red-500 text-center mt-[10px]'>สามารถส่งได้ครั้งเดียว</div>
