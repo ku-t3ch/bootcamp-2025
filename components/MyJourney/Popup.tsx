@@ -101,7 +101,6 @@ const Popup: React.FC<PopupProps> = ({
           />
           
         </div>
-         <div className='text-sm text-red-500 text-center mb-[10px]'>*แคปหน้าจอก่อนส่ง</div>
         <button 
           className={`w-full py-2 text-white text-sm rounded-md ${rating === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
           style={{ backgroundColor: `#${color}` }}
