@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Popup from "./Popup";
+import useUserStore from "@/hooks/userStore";
 
 const stationData = {
   "station1": { name: ["Viddddddddddya"], image: "science.webp", colorLock: "E1BFD8", colorUnlock: "F182D2" },
@@ -26,6 +27,8 @@ const Station = ({stationId, status}: StationProps) => {
       setShowPopup(!showPopup);
     }
   };
+
+  const { user } = useUserStore();
 
   return (
     <div 
@@ -70,8 +73,9 @@ const Station = ({stationId, status}: StationProps) => {
         title={station.name}
         description={`รายละเอียดกิจกรรมสถานี ${stationId.replace('station', '')}`}
         buttonText="ดูรายละเอียด"
-        buttonAction={() => console.log(`View details of ${stationId}`)}
+        username={user?.username}
         color={stationColor}
+        stationId={stationId.replace('station', '')}
       />
     </div>
   );
